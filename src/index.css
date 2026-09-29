@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-emerald-50: #f7fee7;
+  --color-emerald-100: #ecfccb;
+  --color-emerald-200: #d9f99d;
+  --color-emerald-300: #bef264;
+  --color-emerald-400: #a3e635;
+  --color-emerald-500: #84cc16;
+  --color-emerald-600: #65a30d;
+  --color-emerald-700: #4d7c0f;
+  --color-emerald-800: #3f6212;
+  --color-emerald-900: #365314;
+  --color-emerald-950: #1a2e05;
+
+  --color-tenziaa-50: #f7fee7;
+  --color-tenziaa-100: #ecfccb;
+  --color-tenziaa-200: #d9f99d;
+  --color-tenziaa-300: #bef264;
+  --color-tenziaa-400: #a3e635;
+  --color-tenziaa-500: #84cc16;
+  --color-tenziaa-600: #65a30d;
+  --color-tenziaa-700: #4d7c0f;
+  --color-tenziaa-800: #3f6212;
+  --color-tenziaa-900: #365314;
+  --color-tenziaa-950: #1a2e05;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+/* Custom subtle scrollbar in Tenziaa signature lime green */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #bef264;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #84cc16;
+}
