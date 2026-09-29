@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import { Phone, Mail, MapPin, Clock, ShieldCheck, Heart } from 'lucide-react';
 
@@ -13,7 +14,9 @@ export default function Footer({ onOpenBooking }) {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-4 space-y-4">
             <div className="inline-block py-1">
-              <Logo size="md" theme="dark" />
+              <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <Logo size="md" theme="dark" />
+              </Link>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               Tenziaa Wellness and Beauty Clinic is India's premier destination for safe, effective, non-surgical body contouring, inch loss, muscle toning, and holistic wellness.
@@ -33,12 +36,12 @@ export default function Footer({ onOpenBooking }) {
               Quick Navigation
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><a href="#treatments" className="hover:text-emerald-400 transition-colors">Treatments</a></li>
-              <li><a href="#calculator" className="hover:text-emerald-400 transition-colors">BMI Calculator</a></li>
-              <li><a href="#results" className="hover:text-emerald-400 transition-colors">Before &amp; After</a></li>
-              <li><a href="#why-us" className="hover:text-emerald-400 transition-colors">Why Choose Us</a></li>
-              <li><a href="#testimonials" className="hover:text-emerald-400 transition-colors">Testimonials</a></li>
-              <li><a href="#faq" className="hover:text-emerald-400 transition-colors">FAQs</a></li>
+              <li><Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-emerald-400 transition-colors">Home</Link></li>
+              <li><a href="/#about" className="hover:text-emerald-400 transition-colors">About Us</a></li>
+              <li><a href="/#services-carousel" className="hover:text-emerald-400 transition-colors">Services</a></li>
+              <li><a href="/#minimally-invasive" className="hover:text-emerald-400 transition-colors">Treatments</a></li>
+              <li><Link to="/blog" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-emerald-400 transition-colors font-semibold text-emerald-400">Clinical Blog</Link></li>
+              <li><a href="/#faq" className="hover:text-emerald-400 transition-colors">FAQs</a></li>
             </ul>
           </div>
 
@@ -64,13 +67,13 @@ export default function Footer({ onOpenBooking }) {
             </h4>
             <div className="space-y-3 text-sm">
               <a
-                href="tel:+917030034567"
+                href="tel:+919363721689"
                 className="flex items-center gap-2.5 text-white hover:text-emerald-400 font-bold transition-colors"
               >
                 <div className="w-8 h-8 rounded-full bg-emerald-900/60 text-emerald-400 flex items-center justify-center shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
-                <span>+91 7030034567</span>
+                <span>+91 93637 21689</span>
               </a>
 
               <div className="flex items-center gap-2.5 text-slate-400">

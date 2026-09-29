@@ -66,13 +66,13 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Column: Value Proposition */}
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Pill Tag */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs sm:text-sm font-semibold tracking-wide">
               <Sparkles className="w-4 h-4 text-emerald-600" />
-              <span>India's Leading Non-Invasive Slimming &amp; Contouring Clinic</span>
+              <span>Dharmapuri's 1st Exclusive Weight Loss Clinic</span>
             </div>
 
             {/* Main Headline */}
@@ -85,7 +85,7 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
 
             {/* Subtext */}
             <p className="text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed">
-              Target stubborn fat, tighten loose skin, and tone muscles with US-FDA approved technologies. 
+              Target stubborn fat, tighten loose skin, and tone muscles with US-FDA approved technologies.
               Personalized medical body shaping designed for your lifestyle with <strong className="text-emerald-900 font-semibold">zero downtime</strong>.
             </p>
 
@@ -178,19 +178,18 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
             >
               {/* Outer decorative glow frame */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-emerald-300 to-teal-200 rounded-3xl blur-xl opacity-40"></div>
-              
+
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-                
+
                 {/* Slides Container */}
-                <div className="relative h-[440px] sm:h-[490px] w-full overflow-hidden">
+                <div className="relative h-[360px] sm:h-[440px] md:h-[490px] w-full overflow-hidden">
                   {SLIDES.map((slide, index) => {
                     const isActive = index === currentSlide;
                     return (
                       <div
                         key={slide.image}
-                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                          isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                        }`}
+                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                          }`}
                       >
                         <img
                           src={slide.image}
@@ -203,38 +202,38 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
                     );
                   })}
 
-                  {/* Active Slide Dynamic Badge - Top Left */}
-                  <div className="absolute top-5 left-5 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-xl border border-emerald-100 flex items-center gap-3 transition-all duration-300">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
-                      <Zap className="w-5 h-5 fill-emerald-600/30" />
+                  {/* Active Slide Dynamic Badge - Top Left with logo color border */}
+                  <div className="absolute top-4 left-4 sm:top-5 sm:left-5 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-xl border-2 border-[#84cc16]/70 flex items-center gap-2.5 sm:gap-3 transition-all duration-300 max-w-[200px] sm:max-w-none">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                      <Zap className="w-4 h-4 sm:w-5 sm:h-5 fill-emerald-600/30" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-wider block">
+                      <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 uppercase tracking-wider block">
                         {SLIDES[currentSlide].statTop.label}
                       </span>
-                      <span className="text-sm font-extrabold text-slate-900">
+                      <span className="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight block">
                         {SLIDES[currentSlide].statTop.value}
                       </span>
                     </div>
                   </div>
 
-                  {/* Active Slide Badge - Bottom Right */}
-                  <div className="absolute bottom-16 right-5 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-3 shadow-xl border border-emerald-100 flex items-center gap-3 transition-all duration-300">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center">
-                      <ShieldCheck className="w-6 h-6" />
+                  {/* Active Slide Badge - Bottom Right with logo color border */}
+                  <div className="absolute bottom-14 right-4 sm:bottom-16 sm:right-5 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-xl border-2 border-[#84cc16]/70 flex items-center gap-2.5 sm:gap-3 transition-all duration-300 max-w-[200px] sm:max-w-none">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-slate-900 block">
+                      <span className="text-[11px] sm:text-xs font-bold text-slate-900 block leading-tight">
                         {SLIDES[currentSlide].statBottom.value}
                       </span>
-                      <span className="text-[10px] text-slate-500">
+                      <span className="text-[9px] sm:text-[10px] text-slate-500">
                         {SLIDES[currentSlide].statBottom.label}
                       </span>
                     </div>
                   </div>
 
                   {/* Active Slide Caption - Bottom Left */}
-                  <div className="absolute bottom-16 left-5 z-20 bg-emerald-950/85 backdrop-blur-md text-white rounded-xl px-3.5 py-1.5 text-xs font-medium border border-emerald-800/40">
+                  <div className="hidden sm:block absolute bottom-16 left-5 z-20 bg-emerald-950/85 backdrop-blur-md text-white rounded-xl px-3.5 py-1.5 text-xs font-medium border border-emerald-800/40">
                     <span>🌿 {SLIDES[currentSlide].title}</span>
                   </div>
 
@@ -263,11 +262,10 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
                         key={idx}
                         type="button"
                         onClick={() => goToSlide(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          idx === currentSlide
+                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlide
                             ? 'w-8 bg-emerald-400'
                             : 'w-2 bg-white/60 hover:bg-white'
-                        }`}
+                          }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
                     ))}

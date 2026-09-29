@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Award, Users, HeartPulse, Sparkles, Clock, CheckCircle } from 'lucide-react';
 
-export default function WhyChooseUs({ onOpenBooking }) {
+export default function WhyChooseUs({ onOpenBooking, onOpenBCA }) {
   const points = [
     {
       icon: ShieldCheck,
@@ -83,17 +83,19 @@ export default function WhyChooseUs({ onOpenBooking }) {
           })}
         </div>
 
-        {/* 4-Step Patient Journey inside Why Us */}
-        <div className="mt-20 bg-emerald-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-700/40 rounded-full blur-3xl pointer-events-none"></div>
+        {/* 4-Step BCA Consultancy & Patient Journey */}
+        <div className="mt-20 bg-[#2f4910] text-white rounded-[32px] sm:rounded-[36px] p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-[#84cc16]/20">
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#84cc16]/15 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="max-w-3xl mb-12">
-            <span className="text-emerald-300 font-bold text-xs uppercase tracking-widest block mb-2">
-              Simple &amp; Painless
+            <span className="text-[#a3e635] font-extrabold text-xs uppercase tracking-widest block mb-2">
+              BCA Consultancy Process • Simple &amp; Painless
             </span>
-            <h3 className="text-3xl font-extrabold tracking-tight">Your 4-Step Journey to a Sculpted Silhouette</h3>
-            <p className="mt-2 text-emerald-100 text-sm sm:text-base">
-              From your initial consultation to long-lasting inch reduction, we guide you every single step.
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+              Your 4-Step BCA Consultancy &amp; Sculpting Journey
+            </h3>
+            <p className="mt-2.5 text-emerald-100/90 text-sm sm:text-base leading-relaxed">
+              From precision computerized Body Composition Analysis (BCA) to long-lasting inch reduction, we guide you every single step.
             </p>
           </div>
 
@@ -101,43 +103,46 @@ export default function WhyChooseUs({ onOpenBooking }) {
             {[
               {
                 step: '01',
-                title: '3D Body Scan',
-                desc: 'Complimentary computerized body composition scan measuring subcutaneous fat, BMI, and water retention.',
+                title: '3D BCA Body Scan',
+                desc: 'Complimentary computerized Body Composition Analysis measuring visceral vs. subcutaneous fat, BMI, muscle mass, and water retention.',
               },
               {
                 step: '02',
-                title: 'Doctor Roadmap',
-                desc: 'One-on-one consultation with an aesthetic physician to map out your target zones and ideal treatments.',
+                title: 'Doctor BCA Roadmap',
+                desc: 'One-on-one consultation with an aesthetic physician reviewing your BCA diagnostic report and mapping out your personalized inch-loss roadmap.',
               },
               {
                 step: '03',
-                title: 'Painless Session',
-                desc: 'Relax in our luxury suite with soothing music while targeted non-invasive applicators sculpt your body.',
+                title: 'Targeted Painless Session',
+                desc: 'Relax in our luxury suite with soothing music while targeted non-invasive applicators sculpt your body calibrated to your BCA scan.',
               },
               {
                 step: '04',
-                title: 'Lasting Results',
-                desc: 'Watch inches melt away over 3 to 6 weeks, supported by our ongoing metabolic and nutrition check-ins.',
+                title: 'BCA Tracking & Lasting Results',
+                desc: 'Watch inches melt away over 3 to 6 weeks, validated with repeat comparative BCA scans and ongoing metabolic nutrition check-ins.',
               },
             ].map((st) => (
-              <div key={st.step} className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 flex flex-col justify-between">
+              <div 
+                key={st.step} 
+                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-7 border border-white/15 flex flex-col justify-between hover:border-[#84cc16]/60 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1"
+              >
                 <div>
-                  <span className="text-3xl font-black text-emerald-400 block mb-2">{st.step}</span>
-                  <h4 className="text-lg font-bold text-white mb-2">{st.title}</h4>
+                  <span className="text-3xl font-black text-[#a3e635] block mb-2">{st.step}</span>
+                  <h4 className="text-lg font-bold text-white mb-2 leading-snug">{st.title}</h4>
                   <p className="text-xs text-emerald-100/90 leading-relaxed">{st.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs sm:text-sm text-emerald-100">
-              ⚡ Over 94% of our clients see measurable inch loss within the very first month.
+          <div className="mt-10 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span className="text-xs sm:text-sm text-emerald-100 flex items-center gap-1.5">
+              <span>⚡ Over 94% of our clients see measurable inch loss within the very first month.</span>
             </span>
             <button
               type="button"
-              onClick={onOpenBooking}
-              className="px-6 py-3 rounded-full bg-white text-emerald-950 hover:bg-emerald-50 font-bold text-xs uppercase tracking-wider transition-all shadow cursor-pointer shrink-0"
+              onClick={() => onOpenBCA ? onOpenBCA() : onOpenBooking()}
+              className="px-7 py-3.5 rounded-full bg-white text-[#2f4910] hover:bg-[#ecfccb] font-extrabold text-xs uppercase tracking-wider transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer shrink-0"
             >
               Book Complimentary Step 01 Today
             </button>

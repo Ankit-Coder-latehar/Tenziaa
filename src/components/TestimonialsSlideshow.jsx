@@ -112,8 +112,31 @@ export default function TestimonialsSlideshow() {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartXRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndXRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartXRef.current || !touchEndXRef.current) return;
+    const diff = touchStartXRef.current - touchEndXRef.current;
+    if (diff > 45) {
+      handleNext();
+    } else if (diff < -45) {
+      handlePrev();
+    }
+    touchStartXRef.current = 0;
+    touchEndXRef.current = 0;
+  };
+
   return (
-    <section id="customer-testimonials" className="py-20 bg-gradient-to-b from-white via-emerald-50/20 to-white relative overflow-hidden border-b border-emerald-100/70">
+    <section id="customer-testimonials" className="py-16 sm:py-20 bg-gradient-to-b from-white via-emerald-50/20 to-white relative overflow-hidden border-b border-emerald-100/70">
       {/* Decorative soft emerald background glow */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-emerald-100/35 rounded-full blur-3xl pointer-events-none -z-10"></div>
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-emerald-50/60 rounded-full blur-2xl pointer-events-none -z-10"></div>
@@ -121,11 +144,11 @@ export default function TestimonialsSlideshow() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Header Row matching user's reference image */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-12 sm:mb-16">
           
           {/* Left: Smiling Woman in Namaste pose with mandala */}
           <div className="md:col-span-4 flex justify-center md:justify-start">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-white shadow-xl bg-emerald-50 flex items-center justify-center">
+            <div className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-white shadow-xl bg-emerald-50 flex items-center justify-center">
               <img
                 src="/images/testimonials-woman.jpg"
                 alt="Happy Tenziaa Clinic client in namaste pose"
@@ -140,7 +163,7 @@ export default function TestimonialsSlideshow() {
             <span className="text-base sm:text-lg font-serif text-slate-700 tracking-wide block">
               Testimonials
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               What They’re Saying
             </h2>
             <div className="pt-2 flex justify-center md:justify-start">
@@ -160,28 +183,31 @@ export default function TestimonialsSlideshow() {
 
         {/* Carousel Container */}
         <div
-          className="relative px-2 sm:px-6"
+          className="relative px-0 sm:px-6"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Arrow Left */}
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer -ml-2 sm:-ml-4"
+            className="absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Previous review"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Arrow Right */}
           <button
             type="button"
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer -mr-2 sm:-mr-4"
+            className="absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Next review"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Sliding Track */}

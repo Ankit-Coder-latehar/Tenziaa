@@ -49,26 +49,26 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-emerald-100 overflow-hidden transform transition-all">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-emerald-100 overflow-hidden transform transition-all max-h-[92vh] flex flex-col my-auto">
         
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-emerald-800 to-teal-800 p-6 text-white relative">
+        <div className="bg-gradient-to-r from-emerald-800 to-teal-800 p-5 sm:p-6 text-white relative shrink-0">
           <button
             type="button"
             onClick={handleResetAndClose}
-            className="absolute top-5 right-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+            className="absolute top-4 right-4 sm:top-5 sm:right-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
             aria-label="Close"
           >
             <X className="w-6 h-6" />
           </button>
 
-          <div className="flex items-center gap-2 mb-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-white/20 text-[11px] font-bold tracking-wider uppercase text-emerald-200">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-emerald-200">
               Zero Obligation
             </span>
           </div>
-          <h3 className="text-2xl font-extrabold tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
             Book Your Tenziaa™ Appointment
           </h3>
           <p className="text-emerald-100 text-xs sm:text-sm mt-1">
@@ -77,7 +77,7 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 sm:p-8">
+        <div className="p-5 sm:p-8 overflow-y-auto flex-1">
           {isSubmitted ? (
             <div className="text-center py-6 space-y-4">
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
@@ -107,7 +107,7 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
 
               <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
                 <a
-                  href={`https://wa.me/917030034567?text=Hi%20Tenziaa,%20I%20just%20booked%20an%20appointment%20for%20${encodeURIComponent(formData.treatment)}`}
+                  href={`https://wa.me/919363721689?text=Hi%20Tenziaa,%20I%20just%20booked%20an%20appointment%20for%20${encodeURIComponent(formData.treatment)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-colors text-center"
@@ -257,7 +257,7 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
 
               {/* Direct helpline reminder */}
               <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100 flex items-center justify-between text-xs text-emerald-900">
-                <span>Direct Helpline: <strong className="text-emerald-950 font-bold">+91 7030034567</strong></span>
+                <span>Direct Helpline: <strong className="text-emerald-950 font-bold">+91 93637 21689</strong></span>
                 <span className="text-[11px] text-emerald-700">Immediate Phone Assistance</span>
               </div>
 

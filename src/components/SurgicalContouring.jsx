@@ -69,26 +69,30 @@ const TREATMENTS = [
 
 export default function SurgicalContouring({ onOpenBooking }) {
   const [selectedModal, setSelectedModal] = useState(null);
-  const [scrollProgress, setScrollProgress] = useState([0, 0, 0]);
+  const [scrollOffsets, setScrollOffsets] = useState([0, 0, 0]);
   const cardRefs = useRef([]);
+  const containerRef = useRef(null);
 
-  // Calculate scroll positions to provide smooth overlapping scale and depth
+  // Smooth scroll listener to compute dynamic stacking overlap depth and scale
   useEffect(() => {
     const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const progress = cardRefs.current.map((card) => {
+      const topOffset = 105;
+      const offsets = cardRefs.current.map((card, idx) => {
         if (!card) return 0;
         const rect = card.getBoundingClientRect();
-        // Progress of card sticking and being overlapped:
-        // 0 = below sticky threshold, 1 = fully overlapped by next card
-        const stickyTop = 110;
-        if (rect.top <= stickyTop + 10) {
-          const overlapDist = Math.max(0, stickyTop - rect.top);
-          return Math.min(1, overlapDist / 300);
+        // Check if the next card is scrolling over this one
+        const nextCard = cardRefs.current[idx + 1];
+        if (nextCard) {
+          const nextRect = nextCard.getBoundingClientRect();
+          // How close next card is to overlapping
+          const distance = nextRect.top - (topOffset + idx * 24);
+          if (distance < 280) {
+            return Math.min(1, Math.max(0, (280 - distance) / 280));
+          }
         }
         return 0;
       });
-      setScrollProgress(progress);
+      setScrollOffsets(offsets);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -97,49 +101,47 @@ export default function SurgicalContouring({ onOpenBooking }) {
   }, []);
 
   return (
-    <section id="minimally-invasive" className="py-20 sm:py-28 bg-[#fafafc] relative">
+    <section id="minimally-invasive" className="py-16 sm:py-24 bg-white relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header matching the reference screenshot */}
-        <div className="text-center mb-14 sm:mb-20">
-          <span className="text-base sm:text-lg font-serif text-slate-700 tracking-wide block mb-2">
+        <div className="text-center mb-12 sm:mb-16">
+          <span className="text-base sm:text-lg font-serif text-slate-700 tracking-wide block mb-2.5">
             Tenziaa Clinic Salem
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
             Minimally Invasive Fat Reduction Treatments
           </h2>
         </div>
 
         {/* Overlapping Stacking Cards Container */}
-        <div className="relative pb-16 sm:pb-24">
+        <div ref={containerRef} className="relative pb-16 sm:pb-24">
           {TREATMENTS.map((item, index) => {
-            // Progressive scale and shadow as next card slides over
             const isLast = index === TREATMENTS.length - 1;
-            const overlapRatio = scrollProgress[index] || 0;
-            // Scale slightly down (from 1 to 0.96) when overlapped by next card
-            const currentScale = 1 - overlapRatio * 0.04;
-            // Dim slightly (from 1 to 0.95) to enhance depth
-            const currentBrightness = 1 - overlapRatio * 0.05;
+            const overlapAmount = scrollOffsets[index] || 0;
+            // When overlapped by the incoming card, scale down slightly and dim for depth
+            const scale = 1 - overlapAmount * 0.05;
+            const brightness = 1 - overlapAmount * 0.06;
 
             return (
               <div
                 key={item.id}
                 ref={(el) => (cardRefs.current[index] = el)}
-                className="sticky transition-transform duration-150 ease-out"
+                className="sticky transition-all duration-200 ease-out will-change-transform"
                 style={{
-                  top: `calc(100px + ${index * 28}px)`,
+                  top: `calc(90px + ${index * 26}px)`,
                   zIndex: index + 10,
-                  marginBottom: isLast ? '0' : '5rem',
-                  transform: `scale(${currentScale})`,
-                  filter: `brightness(${currentBrightness})`,
+                  marginBottom: isLast ? '0' : '150px',
+                  transform: `scale(${scale})`,
+                  filter: `brightness(${brightness})`,
                   transformOrigin: 'top center',
                 }}
               >
-                {/* The Card container matching the reference screenshot */}
-                <div className="bg-white rounded-3xl sm:rounded-[32px] border border-slate-100/90 shadow-[0_-4px_20px_rgba(0,0,0,0.03),0_18px_45px_rgba(0,0,0,0.08)] p-6 sm:p-8 md:p-9 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10 transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+                {/* The Card container matching the reference screenshot exactly with logo color border */}
+                <div className="bg-white rounded-3xl sm:rounded-[32px] border-2 border-[#84cc16] shadow-[0_10px_35px_rgba(0,0,0,0.06),0_2px_8px_rgba(132,204,22,0.12)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-5 sm:p-7 md:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10 transition-all duration-300">
                   
-                  {/* Left: Card Image */}
-                  <div className="w-full md:w-[42%] lg:w-[40%] h-56 sm:h-64 md:h-[230px] rounded-2xl sm:rounded-[22px] overflow-hidden shrink-0 bg-slate-100 shadow-inner">
+                  {/* Left: Card Image matching the reference screenshot */}
+                  <div className="w-full md:w-[360px] lg:w-[390px] h-48 sm:h-56 md:h-[220px] rounded-2xl sm:rounded-[20px] overflow-hidden shrink-0 bg-slate-100 shadow-sm">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -148,9 +150,9 @@ export default function SurgicalContouring({ onOpenBooking }) {
                     />
                   </div>
 
-                  {/* Right: Card Content */}
+                  {/* Right: Card Content matching the reference screenshot */}
                   <div className="flex-1 flex flex-col justify-center items-start text-left space-y-3 sm:space-y-4 w-full">
-                    <h3 className="text-2xl sm:text-[26px] font-bold text-slate-900 tracking-tight leading-snug">
+                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold text-slate-900 tracking-tight leading-snug">
                       {item.title}
                     </h3>
                     
@@ -158,11 +160,11 @@ export default function SurgicalContouring({ onOpenBooking }) {
                       {item.description}
                     </p>
 
-                    <div className="pt-1">
+                    <div className="pt-1.5">
                       <button
                         type="button"
                         onClick={() => setSelectedModal(item)}
-                        className="inline-flex items-center justify-center px-7 py-2 rounded-full border border-slate-900 text-slate-900 text-sm font-medium tracking-normal hover:bg-slate-900 hover:text-white transition-all duration-200 cursor-pointer shadow-sm active:scale-95"
+                        className="inline-flex items-center justify-center px-7 py-2.5 rounded-full border border-slate-900 text-slate-900 text-sm font-medium tracking-normal hover:bg-slate-900 hover:text-white transition-all duration-200 cursor-pointer shadow-sm active:scale-95"
                       >
                         Read More
                       </button>

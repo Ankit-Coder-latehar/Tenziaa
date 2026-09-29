@@ -5,11 +5,11 @@ export default function TreatmentDetailModal({ treatment, onClose, onBookTreatme
   if (!treatment) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-emerald-100 overflow-hidden transform transition-all my-8">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+      <div className="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-emerald-100 overflow-hidden transform transition-all my-auto max-h-[92vh] flex flex-col">
         
         {/* Header Image & Close Button */}
-        <div className="relative h-56 sm:h-64 overflow-hidden bg-slate-900">
+        <div className="relative h-48 sm:h-64 overflow-hidden bg-slate-900 shrink-0">
           <img
             src={treatment.image}
             alt={treatment.title}
@@ -20,23 +20,23 @@ export default function TreatmentDetailModal({ treatment, onClose, onBookTreatme
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full backdrop-blur-md transition-colors"
+            className="absolute top-4 right-4 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full backdrop-blur-md transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="absolute bottom-5 left-6 right-6 text-white">
-            <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md">
+          <div className="absolute bottom-4 left-5 right-5 text-white">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md">
               {treatment.tag}
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold mt-2 leading-tight">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold mt-1.5 leading-tight">
               {treatment.title}
             </h3>
           </div>
         </div>
 
         {/* Modal Content */}
-        <div className="p-6 sm:p-8 space-y-6">
+        <div className="p-5 sm:p-8 space-y-5 overflow-y-auto flex-1">
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             {treatment.description}
           </p>

@@ -165,7 +165,7 @@ export default function ScheduleConsultation() {
 
                   <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
                     <a
-                      href={`https://wa.me/917030034567?text=Hi%20Tenziaa%20Clinic,%20I%20have%20scheduled%20a%20consultation%20for%20${encodeURIComponent(formData.service)}`}
+                      href={`https://wa.me/919363721689?text=Hi%20Tenziaa%20Clinic,%20I%20have%20scheduled%20a%20consultation%20for%20${encodeURIComponent(formData.service)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all text-center"

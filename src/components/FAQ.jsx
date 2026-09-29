@@ -99,11 +99,11 @@ export default function FAQ({ onOpenBooking }) {
           </div>
           <div className="flex items-center gap-3">
             <a
-              href="tel:+917030034567"
+              href="tel:+919363721689"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider hover:bg-emerald-800 transition-colors shadow-sm"
             >
               <Phone className="w-4 h-4" />
-              +91 7030034567
+              +91 93637 21689
             </a>
             <button
               type="button"

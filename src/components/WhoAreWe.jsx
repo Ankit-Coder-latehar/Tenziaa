@@ -113,7 +113,7 @@ export default function WhoAreWe() {
           {cards.map((item, index) => (
             <div
               key={index}
-              className="group bg-gradient-to-b from-white to-emerald-50/30 rounded-2xl p-7 border border-emerald-200/80 shadow-md hover:shadow-xl hover:border-emerald-500 transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center text-center relative overflow-hidden"
+              className="group bg-gradient-to-b from-white to-emerald-50/30 rounded-2xl p-6 sm:p-7 border-2 border-[#84cc16] shadow-md hover:shadow-xl hover:border-[#65a30d] transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center text-center relative overflow-hidden"
             >
               {/* Subtle top green accent border line on hover */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
