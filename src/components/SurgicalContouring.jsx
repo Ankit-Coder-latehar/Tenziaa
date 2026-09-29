@@ -69,77 +69,75 @@ const TREATMENTS = [
 
 export default function SurgicalContouring({ onOpenBooking }) {
   const [selectedModal, setSelectedModal] = useState(null);
-  const [scrollOffsets, setScrollOffsets] = useState([0, 0, 0]);
   const cardRefs = useRef([]);
-  const containerRef = useRef(null);
 
-  // Smooth scroll listener to compute dynamic stacking overlap depth and scale
-  useEffect(() => {
-    const handleScroll = () => {
-      const topOffset = 105;
-      const offsets = cardRefs.current.map((card, idx) => {
-        if (!card) return 0;
-        const rect = card.getBoundingClientRect();
-        // Check if the next card is scrolling over this one
-        const nextCard = cardRefs.current[idx + 1];
-        if (nextCard) {
-          const nextRect = nextCard.getBoundingClientRect();
-          // How close next card is to overlapping
-          const distance = nextRect.top - (topOffset + idx * 24);
-          if (distance < 280) {
-            return Math.min(1, Math.max(0, (280 - distance) / 280));
-          }
-        }
-        return 0;
-      });
-      setScrollOffsets(offsets);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const scrollToCard = (index) => {
+    const card = cardRefs.current[index];
+    if (card) {
+      const yOffset = -100;
+      const y = card.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section id="minimally-invasive" className="py-16 sm:py-24 bg-white relative overflow-hidden">
+    <section id="minimally-invasive" className="py-16 sm:py-24 bg-white relative overflow-visible">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header matching the reference screenshot */}
-        <div className="text-center mb-12 sm:mb-16">
+        {/* Section Header */}
+        <div className="text-center mb-8 sm:mb-12">
           <span className="text-base sm:text-lg font-serif text-slate-700 tracking-wide block mb-2.5">
             Tenziaa Clinic Salem
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
             Minimally Invasive Fat Reduction Treatments
           </h2>
+          <p className="text-slate-500 text-sm sm:text-base mt-2.5 max-w-xl mx-auto">
+            Targeted clinical procedures designed for precise, permanent fat reduction.
+          </p>
+        </div>
+
+        {/* Quick Treatment Switcher Tabs */}
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-10 overflow-x-auto pb-2 scrollbar-none">
+          {TREATMENTS.map((item, idx) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => scrollToCard(idx)}
+              className="px-4 py-2 rounded-full text-xs sm:text-sm font-medium border border-slate-200 bg-slate-50/70 hover:bg-emerald-50 hover:border-[#84cc16] hover:text-emerald-900 text-slate-700 transition-all cursor-pointer whitespace-nowrap shadow-xs active:scale-95"
+            >
+              <span className="font-bold text-emerald-600 mr-1.5">0{idx + 1}.</span>
+              {item.title}
+            </button>
+          ))}
         </div>
 
         {/* Overlapping Stacking Cards Container */}
-        <div ref={containerRef} className="relative pb-16 sm:pb-24">
+        <div className="relative pb-16 sm:pb-24">
           {TREATMENTS.map((item, index) => {
             const isLast = index === TREATMENTS.length - 1;
-            const overlapAmount = scrollOffsets[index] || 0;
-            // When overlapped by the incoming card, scale down slightly and dim for depth
-            const scale = 1 - overlapAmount * 0.05;
-            const brightness = 1 - overlapAmount * 0.06;
 
             return (
               <div
                 key={item.id}
                 ref={(el) => (cardRefs.current[index] = el)}
-                className="sticky transition-all duration-200 ease-out will-change-transform"
+                className="sticky will-change-transform transition-shadow duration-300"
                 style={{
-                  top: `calc(90px + ${index * 26}px)`,
+                  top: `calc(88px + ${index * 18}px)`,
                   zIndex: index + 10,
-                  marginBottom: isLast ? '0' : '150px',
-                  transform: `scale(${scale})`,
-                  filter: `brightness(${brightness})`,
-                  transformOrigin: 'top center',
+                  marginBottom: isLast ? '0px' : '44px',
                 }}
               >
                 {/* The Card container matching the reference screenshot exactly with logo color border */}
-                <div className="bg-white rounded-3xl sm:rounded-[32px] border-2 border-[#84cc16] shadow-[0_10px_35px_rgba(0,0,0,0.06),0_2px_8px_rgba(132,204,22,0.12)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-5 sm:p-7 md:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10 transition-all duration-300">
+                <div className="bg-white rounded-3xl sm:rounded-[32px] border-2 border-[#84cc16] shadow-[0_15px_45px_rgba(0,0,0,0.08),0_2px_10px_rgba(132,204,22,0.15)] hover:shadow-[0_22px_55px_rgba(0,0,0,0.14)] p-5 sm:p-7 md:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10 transition-all duration-300 relative">
                   
+                  {/* Step counter pill on top right */}
+                  <div className="absolute top-4 right-5 sm:top-6 sm:right-7 hidden sm:flex items-center gap-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                      Card 0{index + 1} of 0{TREATMENTS.length}
+                    </span>
+                  </div>
+
                   {/* Left: Card Image matching the reference screenshot */}
                   <div className="w-full md:w-[360px] lg:w-[390px] h-48 sm:h-56 md:h-[220px] rounded-2xl sm:rounded-[20px] overflow-hidden shrink-0 bg-slate-100 shadow-sm">
                     <img
@@ -151,7 +149,13 @@ export default function SurgicalContouring({ onOpenBooking }) {
                   </div>
 
                   {/* Right: Card Content matching the reference screenshot */}
-                  <div className="flex-1 flex flex-col justify-center items-start text-left space-y-3 sm:space-y-4 w-full">
+                  <div className="flex-1 flex flex-col justify-center items-start text-left space-y-3 sm:space-y-4 w-full pr-0 sm:pr-8">
+                    <div className="flex items-center gap-2 sm:hidden">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        0{index + 1} / 0{TREATMENTS.length}
+                      </span>
+                    </div>
+
                     <h3 className="text-xl sm:text-2xl lg:text-[26px] font-bold text-slate-900 tracking-tight leading-snug">
                       {item.title}
                     </h3>

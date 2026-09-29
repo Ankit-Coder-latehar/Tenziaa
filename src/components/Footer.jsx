@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { Phone, Mail, MapPin, Clock, ShieldCheck, Heart } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ShieldCheck, ExternalLink } from 'lucide-react';
 
 export default function Footer({ onOpenBooking }) {
   return (
@@ -12,7 +12,7 @@ export default function Footer({ onOpenBooking }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-slate-800">
           
           {/* Col 1: Brand Info */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-3 space-y-4">
             <div className="inline-block py-1">
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <Logo size="md" theme="dark" />
@@ -21,7 +21,7 @@ export default function Footer({ onOpenBooking }) {
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               Tenziaa Wellness and Beauty Clinic is India's premier destination for safe, effective, non-surgical body contouring, inch loss, muscle toning, and holistic wellness.
             </p>
-            <div className="pt-2 flex items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-semibold">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 US-FDA Cleared Tech
@@ -61,7 +61,7 @@ export default function Footer({ onOpenBooking }) {
           </div>
 
           {/* Col 4: Contact & Locations */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="text-white font-bold text-sm tracking-wider uppercase">
               Get in Touch
             </h4>
@@ -83,11 +83,40 @@ export default function Footer({ onOpenBooking }) {
                 <span>Mon - Sun: 9:00 AM – 8:30 PM</span>
               </div>
 
-              <div className="flex items-start gap-2.5 text-slate-400">
+              {/* Clinic Location */}
+              <div className="flex items-start gap-2.5 text-slate-300">
                 <div className="w-8 h-8 rounded-full bg-slate-800 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
-                <span>Centers in Mumbai (Bandra &amp; South Mumbai), Delhi NCR, Bangalore, Pune</span>
+                <div className="text-xs leading-relaxed">
+                  <span className="font-semibold text-white block text-sm mb-0.5">Clinic Location</span>
+                  <span className="text-slate-300">
+                    10/3, 2nd Floor, Salem Main Road, Bharathipuram, Indhira Nagar, Dharmapuri, Tamil Nadu 636701
+                  </span>
+                </div>
+              </div>
+
+              {/* Show in Map Embed & Action */}
+              <div className="pt-1 space-y-2">
+                <div className="w-full h-36 rounded-xl overflow-hidden border border-slate-700/80 shadow-inner bg-slate-950 relative group">
+                  <iframe
+                    title="Clinic Location Map - Dharmapuri"
+                    src="https://maps.google.com/maps?q=10/3,+2nd+Floor,+Salem+Main+Road,+Bharathipuram,+Indhira+Nagar,+Dharmapuri,+Tamil+Nadu+636701&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full border-0 filter contrast-105 opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=10%2F3%2C+2nd+Floor%2C+Salem+Main+Road%2C+Bharathipuram%2C+Indhira+Nagar%2C+Dharmapuri%2C+Tamil+Nadu+636701"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Show in Map / Get Directions</span>
+                  <ExternalLink className="w-3 h-3 ml-0.5" />
+                </a>
               </div>
             </div>
 
