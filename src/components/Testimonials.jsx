@@ -3,10 +3,10 @@ import { Star, CheckCircle, Quote, ThumbsUp } from 'lucide-react';
 
 const REVIEWS = [
   {
-    name: 'Dr. Radhika Iyer',
+    name: 'Mohan Kumar',
     designation: 'Dermatologist & Client',
     city: 'Mumbai (Bandra West)',
-    review: 'As a medical professional, I was naturally skeptical of non-invasive fat loss claims. But after experiencing the CryoSculpt 360° protocol myself at Tenziaa, I was genuinely impressed. I lost 4 inches from my abdomen in just 5 weeks with zero discomfort.',
+    review: "The biggest challenge we faced was that our happiest customers were often the quietest. Tenzia has given them a voice. It’s a seamless, non-intrusive way to prompt our clients for their honest feedback, and the response rate has been incredible. Seeing the steady flow of genuine stories from our clients has not only boosted our online ranking but also boosted our teams morale. Its an elegant solution that focuses on what matters most—the actual experience of the customer. If you want to build a brand based on real trust, Tenzia is the tool to use",
     rating: 5,
     treatment: 'CryoSculpt 360° Abdomen',
     inches: '-4.2 Inches',
@@ -48,7 +48,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20 bg-gradient-to-b from-white via-emerald-50/30 to-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">

@@ -55,7 +55,7 @@ export default function Header({ onOpenBooking, onOpenBCA }) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
             </span>
-            <span>Special Offer: Free 3D Body Composition Scan &amp; Consultation with Doctor</span>
+            <span>Special Offer: BCA Consultation at <span className="line-through text-slate-400 font-semibold">₹500</span> <span className="font-extrabold text-emerald-900">₹350</span> (30% OFF)</span>
             <button
               type="button"
               onClick={() => onOpenBCA ? onOpenBCA() : (onOpenBooking && onOpenBooking({ treatment: 'BCA Consultation & 3D Body Scan' }))}
@@ -82,8 +82,8 @@ export default function Header({ onOpenBooking, onOpenBCA }) {
       {/* Main Header matching user reference */}
       <header
         className={`sticky top-0 z-40 bg-white transition-all duration-300 ${isScrolled
-            ? 'shadow-md border-b border-emerald-100/70 bg-white/95 backdrop-blur-md py-3'
-            : 'border-b border-slate-100 py-4.5'
+          ? 'shadow-md border-b border-emerald-100/70 bg-white/95 backdrop-blur-md py-3'
+          : 'border-b border-slate-100 py-4.5'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

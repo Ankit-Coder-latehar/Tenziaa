@@ -1,195 +1,115 @@
-import React, { useState } from 'react';
-import { Award, ArrowRight, CheckCircle2, TrendingDown, Star } from 'lucide-react';
+import React from 'react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 
-const STORIES = [
+const TRANSFORMATIONS = [
   {
-    name: 'Pooja Sharma',
-    age: 34,
-    city: 'Mumbai',
-    treatment: 'CryoSculpt 360° + UltraContour',
-    duration: '6 Weeks',
-    loss: '5.2 Inches off Waist',
-    weightLoss: '-9.5 kg',
-    quote: 'After having my baby, nothing seemed to work on my lower tummy pouch. Within 6 weeks of non-invasive sessions at Tenziaa, my pre-pregnancy jeans fit comfortably again with zero downtime!',
-    category: 'Abdomen & Waist',
-    metrics: [
-      { label: 'Waistline', before: '36.5"', after: '31.3"' },
-      { label: 'Body Fat', before: '32.4%', after: '25.1%' },
-      { label: 'Sessions', before: '0', after: '4 Sessions' },
-    ],
+    id: 'weight-loss',
+    title: 'Weight Loss',
+    subtitle: '12-week weight management program',
+    beforeImage: '/images/transform-weight-before.jpg',
+    afterImage: '/images/transform-weight-after.jpg',
   },
   {
-    name: 'Vikram Malhotra',
-    age: 42,
-    city: 'Delhi NCR',
-    treatment: 'EMSculpt Neo + Laser Lipo',
-    duration: '4 Weeks',
-    loss: '4.8 Inches off Flanks',
-    weightLoss: '-7.2 kg',
-    quote: 'As a corporate executive, I had zero time for 2-hour gym routines. The 30-min lunch break sessions melted my stubborn love handles and gave visible abdominal core definition.',
-    category: 'Love Handles & Core',
-    metrics: [
-      { label: 'Flank Measure', before: '39.0"', after: '34.2"' },
-      { label: 'Visceral Fat', before: 'Level 12', after: 'Level 8' },
-      { label: 'Sessions', before: '0', after: '4 Sessions' },
-    ],
+    id: 'skin-care',
+    title: 'Skin Care',
+    subtitle: '8-week skin rejuvenation treatment',
+    beforeImage: '/images/transform-skin-before.jpg',
+    afterImage: '/images/transform-skin-after.jpg',
   },
   {
-    name: 'Ananya Deshmukh',
-    age: 28,
-    city: 'Pune',
-    treatment: 'CryoSculpt 360° Thigh & Hip Protocol',
-    duration: '8 Weeks',
-    loss: '3.6 Inches off Thighs',
-    weightLoss: '-6.0 kg',
-    quote: 'I was self-conscious about saddlebags and cellulite on my outer thighs. Tenziaa customized a targeted freeze treatment that completely smoothed my silhouette. 100% painless!',
-    category: 'Thighs & Hips',
-    metrics: [
-      { label: 'Thigh Girth', before: '24.8"', after: '21.2"' },
-      { label: 'Cellulite Grade', before: 'Grade 3', after: 'Grade 1' },
-      { label: 'Sessions', before: '0', after: '3 Sessions' },
-    ],
+    id: 'hair-care',
+    title: 'Hair Care',
+    subtitle: '4-month hair restoration program',
+    beforeImage: '/images/transform-hair-before.jpg',
+    afterImage: '/images/transform-hair-after.jpg',
   },
 ];
 
 export default function BeforeAfter({ onOpenBooking }) {
-  const [activeStoryIndex, setActiveStoryIndex] = useState(0);
-  const activeStory = STORIES[activeStoryIndex];
-
   return (
-    <section id="results" className="py-20 bg-emerald-50/40 relative">
+    <section id="transformations" className="py-16 sm:py-20 bg-[#fbfdfb] relative border-b border-emerald-100/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Award className="w-3.5 h-3.5 text-emerald-700" />
-            Documented Clinical Results
+        {/* Header matching user reference */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+          <div className="inline-flex items-center justify-center gap-2 mb-2 text-[#0f392b]">
+            {/* Custom down arrow with bar icon matching screenshot */}
+            <svg
+              className="w-6 h-6 text-[#15803d]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 4h16" />
+              <path d="M12 4v13" />
+              <path d="m18 11-6 6-6-6" />
+            </svg>
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-[#0f392b] tracking-tight">
+              Real Transformations
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Real Transformations, Zero Surgery
-          </h2>
-          <p className="mt-3 text-slate-600 text-base sm:text-lg">
-            Over 15,000 clients have redefined their silhouettes with Tenziaa™. Every measurement is scientifically tracked through 3D ultrasound scanning.
+          <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+            See the amazing results our clients have achieved with our wellness programs. These before and after images showcase the effectiveness of our treatments.
           </p>
         </div>
 
-        {/* Story Selector Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {STORIES.map((story, idx) => (
-            <button
-              key={story.name}
-              type="button"
-              onClick={() => setActiveStoryIndex(idx)}
-              className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-2 ${
-                activeStoryIndex === idx
-                  ? 'bg-white text-emerald-900 shadow-md ring-2 ring-emerald-600'
-                  : 'bg-white/70 text-slate-600 hover:bg-white'
-              }`}
+        {/* 3 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {TRANSFORMATIONS.map((item) => (
+            <div
+              key={item.id}
+              className="bg-[#1e293b] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200/50 flex flex-col group"
             >
-              <span>{story.name}</span>
-              <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
-                {story.loss}
-              </span>
-            </button>
-          ))}
-        </div>
+              {/* Dark Top Header Bar */}
+              <div className="p-5 sm:p-6 bg-[#1e293b] text-left">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="text-slate-300 text-xs sm:text-sm mt-1 font-normal">
+                  {item.subtitle}
+                </p>
+              </div>
 
-        {/* Featured Case Study Card */}
-        <div className="bg-white rounded-3xl border border-emerald-100 shadow-xl overflow-hidden max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            
-            {/* Visual Column */}
-            <div className="lg:col-span-5 relative bg-slate-900 min-h-[320px] lg:min-h-full flex items-center justify-center p-6 overflow-hidden">
-              <img
-                src="/images/wellness-fitness.jpg"
-                alt="Transformation result"
-                className="absolute inset-0 w-full h-full object-cover opacity-85"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/30 to-black/40"></div>
-
-              {/* Floating Stat Overlay */}
-              <div className="relative z-10 w-full space-y-3">
-                <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-emerald-100">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-500 uppercase">Target Achieved</span>
-                    <span className="inline-flex items-center text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                      <TrendingDown className="w-3.5 h-3.5 mr-1" />
-                      {activeStory.duration}
+              {/* Side-by-side Before and After Images */}
+              <div className="grid grid-cols-2 gap-0 relative bg-slate-900/10">
+                {/* Before Image */}
+                <div className="relative h-72 sm:h-80 md:h-[340px] overflow-hidden border-r border-slate-700/40">
+                  <img
+                    src={item.beforeImage}
+                    alt={`${item.title} Before Treatment`}
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#15803d] text-white text-xs font-bold shadow-md">
+                      <ArrowDown className="w-3.5 h-3.5 stroke-[2.8]" />
+                      <span>Before</span>
                     </span>
                   </div>
-                  <div className="mt-2 text-2xl font-black text-slate-900">{activeStory.loss}</div>
-                  <div className="text-xs font-semibold text-emerald-700 mt-0.5">Overall Weight: {activeStory.weightLoss}</div>
                 </div>
 
-                <div className="bg-emerald-900/90 text-white backdrop-blur-md rounded-xl p-3 text-xs flex items-center justify-between">
-                  <span>Treatment Protocol:</span>
-                  <span className="font-bold text-emerald-200">{activeStory.treatment}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Narrative & Metrics Column */}
-            <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
-              <div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-2xl font-extrabold text-slate-900">{activeStory.name}</h3>
-                    <p className="text-xs text-slate-500 font-medium">
-                      Age {activeStory.age} • {activeStory.city} • Focus: {activeStory.category}
-                    </p>
-                  </div>
-                  <div className="flex text-amber-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400" />
-                    ))}
+                {/* After Image */}
+                <div className="relative h-72 sm:h-80 md:h-[340px] overflow-hidden">
+                  <img
+                    src={item.afterImage}
+                    alt={`${item.title} After Treatment`}
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#15803d] text-white text-xs font-bold shadow-md">
+                      <ArrowUp className="w-3.5 h-3.5 stroke-[2.8]" />
+                      <span>After</span>
+                    </span>
                   </div>
                 </div>
-
-                {/* Patient Quote */}
-                <div className="mt-6 bg-emerald-50/60 border-l-4 border-emerald-600 p-4 rounded-r-2xl">
-                  <p className="text-slate-700 text-sm sm:text-base italic leading-relaxed">
-                    "{activeStory.quote}"
-                  </p>
-                </div>
-
-                {/* Verified Before/After Metrics Table */}
-                <div className="mt-6">
-                  <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
-                    Verified Ultrasound &amp; Measurement Log
-                  </h4>
-                  <div className="grid grid-cols-3 gap-3">
-                    {activeStory.metrics.map((metric) => (
-                      <div key={metric.label} className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-center">
-                        <span className="text-[11px] text-slate-500 block">{metric.label}</span>
-                        <div className="mt-1 flex items-center justify-center gap-1.5 text-xs font-medium">
-                          <span className="line-through text-slate-400">{metric.before}</span>
-                          <span className="text-emerald-700 font-bold">{metric.after}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom CTA */}
-              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-slate-500 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Clinical proof certified by Senior Medical Director</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => onOpenBooking()}
-                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider transition-all shadow cursor-pointer"
-                >
-                  Start Your Transformation
-                </button>
               </div>
 
             </div>
-
-          </div>
+          ))}
         </div>
 
       </div>

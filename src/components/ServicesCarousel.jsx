@@ -3,52 +3,108 @@ import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2 } from 'l
 
 const SERVICES = [
   {
-    id: 'v-fit-contour',
-    title: 'V-Fit Contour',
-    image: '/images/vfit-contour.jpg',
-    description: 'Designed for full-body contouring, this treatment tightens skin while reducing fat, giving a toned and sculpted appearance.',
-    category: 'Full Body Contouring',
-    highlights: ['Deep Dermal Contouring', 'Targeted Waistline Sculpt', 'Zero Downtime'],
-  },
-  {
-    id: 'skin-fusion-rf',
-    title: 'Skin Fusion RF Sculpting',
-    image: '/images/rf-sculpting.jpg',
-    description: 'Uses radiofrequency (RF) technology to tighten loose skin, reduce fat, and enhance collagen production for firmer, youthful-looking skin.',
-    category: 'Skin Tightening & Collagen',
-    highlights: ['Multi-Polar RF Energy', 'Collagen Remodeling', 'Smoothes Cellulite'],
-  },
-  {
-    id: 'ai-robotic-sonic',
-    title: 'AI Robotic Sonic Slim',
-    image: '/images/clinic-suite.jpg',
-    description: 'A cutting-edge solution that uses AI-powered sonic waves to break down fat cells and enhance body contouring with precision.',
-    category: 'AI-Powered Ultrasonic',
-    highlights: ['Automated Precision Targeting', 'Acoustic Cavitation', 'Immediate Centimeter Loss'],
-  },
-  {
-    id: 'cryosculpt-360',
-    title: 'CryoSculpt 360° Fat Freezing',
-    image: '/images/treatment-cryo.jpg',
-    description: 'Targeted sub-zero cooling that crystallizes and permanently eliminates stubborn fat cells without affecting surrounding tissue.',
-    category: 'Cryolipolysis',
-    highlights: ['Permanent Cell Apoptosis', '25-30% Fat Reduction', 'US-FDA Cleared'],
-  },
-  {
-    id: 'emsculpt-neo',
-    title: 'EMSculpt Neo Core & Tone',
-    image: '/images/wellness-fitness.jpg',
-    description: 'Combines synchronized RF heating with HIFEM energy to simultaneously burn fat and build lean muscle tone in 30-minute sessions.',
-    category: 'Muscle Definition',
-    highlights: ['20,000 Contractions in 30m', '+25% Lean Muscle', '-30% Subcutaneous Fat'],
-  },
-  {
-    id: 'metabolic-drainage',
-    title: 'Metabolic Detox & Inch Loss',
+    id: 'weight-loss',
+    title: 'Weight Loss',
     image: '/images/hero-clinic.jpg',
-    description: 'Pneumatic lymphatic drainage coupled with doctor-guided metabolic nutrition to eliminate retained fluid and accelerate fat flushing.',
-    category: 'Detox & Metabolism',
-    highlights: ['De-Bloats & Flushes Toxins', 'Enhances Microcirculation', 'Sustainable Results'],
+    description: 'Doctor-supervised, personalized clinical weight loss programs combining metabolic calibration and lifestyle guidance for sustainable fat reduction.',
+    category: 'Weight Loss',
+    highlights: ['Doctor-Supervised Protocol', 'Metabolic Rate Optimization', 'Sustainable Fat Reduction'],
+  },
+  {
+    id: 'ayurvedic-kizhi-therapy',
+    title: 'Ayurvedic Kizhi Therapy',
+    image: '/images/ayurvedic-kizhi.jpg',
+    description: 'Traditional warm herbal bolus (Potli) therapy infused with medicinal oils to alleviate stiffness, flush lymphatic toxins, and tone tissues.',
+    category: 'Ayurvedic Wellness',
+    highlights: ['Warm Herbal Potli Massage', 'Deep Detox & Fluid Flushing', 'Improves Blood Circulation'],
+  },
+  {
+    id: 'advanced-cryo-treatment',
+    title: 'Advanced Cryo Treatment',
+    image: '/images/treatment-cryo.jpg',
+    description: 'Targeted sub-zero cooling that crystallizes and permanently eliminates stubborn fat cells naturally with zero surgery or downtime.',
+    category: 'Cryolipolysis',
+    highlights: ['US-FDA Cleared Technology', 'Permanent Fat Cell Apoptosis', 'Non-Invasive & Zero Downtime'],
+  },
+  {
+    id: 'inch-loss',
+    title: 'Inch Loss',
+    image: '/images/rf-sculpting.jpg',
+    description: 'Targeted spot fat reduction protocols designed to trim circumference across waist, belly, thighs, and flanks for visible centimetre loss.',
+    category: 'Targeted Slimming',
+    highlights: ['Targeted Waist & Thigh Trim', 'Immediate Measurable Loss', 'Improves Skin Tightness'],
+  },
+  {
+    id: 'figure-correction',
+    title: 'Figure Correction',
+    image: '/images/abdominoplasty.jpg',
+    description: 'Comprehensive aesthetic body reshaping that aligns natural proportions, sculpts curves, and restores balanced silhouette contours.',
+    category: 'Body Contouring',
+    highlights: ['Proportion & Curve Sculpting', 'Custom Aesthetic Mapping', 'Enhanced Body Silhouette'],
+  },
+  {
+    id: 'body-toning',
+    title: 'Body Toning',
+    image: '/images/wellness-fitness.jpg',
+    description: 'High-intensity electromagnetic and acoustic stimulation to firm lax skin, define core muscles, and sculpt smooth contours.',
+    category: 'Muscle & Tone',
+    highlights: ['Firms Loose & Sagging Skin', 'Builds Lean Muscle Definition', 'Smooths Cellulite Dimples'],
+  },
+  {
+    id: 'fairness-treatment',
+    title: 'Fairness Treatment',
+    image: '/images/cooltech-model.jpg',
+    description: 'Advanced dermatological brightening and pigment-correcting therapies that even skin tone, restore luminous glow, and reverse tanning.',
+    category: 'Skin Radiance',
+    highlights: ['Melanin Pigment Balancing', 'Luminous Complexion Glow', 'Safe & Dermatologist-Guided'],
+  },
+  {
+    id: 'anti-ageing-treatment',
+    title: 'Anti-ageing Treatment',
+    image: '/images/testimonials-woman.jpg',
+    description: 'Collagen-boosting therapies that lift sagging dermal layers, restore natural elasticity, and revitalize youthful facial vitality.',
+    category: 'Age Reversal',
+    highlights: ['Deep Collagen Stimulation', 'Firms Sagging Skin Laxity', 'Youthful Natural Radiance'],
+  },
+  {
+    id: 'deep-scar-removal',
+    title: 'Deep Scar Removal',
+    image: '/images/deep-scar-removal.jpg',
+    description: 'Clinical fractional laser and micro-resurfacing treatments that smooth stubborn acne scars, surgical marks, and textural irregularities.',
+    category: 'Skin Correction',
+    highlights: ['Fractional Laser Resurfacing', 'Minimizes Acne & Tissue Scars', 'Promotes Healthy Skin Renewal'],
+  },
+  {
+    id: 'under-eye-dark-circle',
+    title: 'Under Eye Dark Circle',
+    image: '/images/under-eye.jpg',
+    description: 'Specialized periorbital micro-infusion and lymphatic drainage to alleviate pigmentation, reduce puffiness, and brighten tired eyes.',
+    category: 'Eye Contour Care',
+    highlights: ['Reduces Pigment & Hollows', 'Diminishes Under-Eye Bags', 'Refreshes Tired Looking Eyes'],
+  },
+  {
+    id: 'wrinkles-treatment',
+    title: 'Wrinkles Treatment',
+    image: '/images/chin-reduction.jpg',
+    description: 'Targeted line-smoothing technologies that soften forehead creases, crow’s feet, and smile lines for naturally supple, rejuvenated skin.',
+    category: 'Skin Smoothing',
+    highlights: ['Softens Fine Lines & Creases', 'Boosts Elastin Production', 'Smooth & Supple Texture'],
+  },
+  {
+    id: 'hair-transplant',
+    title: 'Hair Transplant',
+    image: '/images/hair-transplant.jpg',
+    description: 'Precision Follicular Unit Extraction (FUE) graft relocation delivering natural hairline reconstruction and permanent hair density.',
+    category: 'Hair Restoration',
+    highlights: ['Modern FUE Micro-Grafts', 'Permanent Natural Hairline', 'High Density & Fast Healing'],
+  },
+  {
+    id: 'hair-regrowth',
+    title: 'Hair Regrowth',
+    image: '/images/clinic-suite.jpg',
+    description: 'Doctor-administered PRP, growth factor concentrate, and mesotherapy to awaken dormant follicles and arrest active thinning.',
+    category: 'Trichology',
+    highlights: ['Stimulates Dormant Follicles', 'Arrests Active Hair Fall', 'Thickens Thinning Strands'],
   },
 ];
 
@@ -130,11 +186,11 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
             Our Services
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Non-Invasive Weight Loss Treatments
+            Specialized Slimming, Skin &amp; Hair Treatments
           </h2>
           <div className="mt-3 flex items-center justify-center gap-2 text-xs font-semibold text-emerald-800">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>US-FDA Cleared Technologies • Scientifically Backed Protocols</span>
+            <span>Doctor-Supervised • US-FDA Cleared Technologies • Scientifically Proven</span>
           </div>
         </div>
 
@@ -172,7 +228,7 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
             <div
               className="flex transition-transform duration-600 ease-out gap-6"
               style={{
-                transform: `translateX(-${currentIndex * (100 / itemsPerView + (6 * (itemsPerView - 1)) / (itemsPerView * 10))}%)`,
+                transform: `translateX(calc(-${currentIndex} * (100% + 24px) / ${itemsPerView}))`,
               }}
             >
               {SERVICES.map((service) => (
@@ -239,21 +295,26 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
             </div>
           </div>
 
-          {/* Bottom Dots Indicator matching user image */}
-          <div className="mt-8 flex items-center justify-center gap-2">
-            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setCurrentIndex(idx)}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  idx === currentIndex
-                    ? 'w-7 h-2.5 bg-emerald-600'
-                    : 'w-2.5 h-2.5 bg-slate-300 hover:bg-emerald-300'
-                }`}
-                aria-label={`Go to slide page ${idx + 1}`}
-              />
-            ))}
+          {/* Bottom Dots & Counter Indicator */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex items-center gap-1.5 flex-wrap justify-center max-w-full">
+              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    idx === currentIndex
+                      ? 'w-7 h-2.5 bg-emerald-600'
+                      : 'w-2 h-2 bg-slate-300 hover:bg-emerald-300'
+                  }`}
+                  aria-label={`Go to slide page ${idx + 1}`}
+                />
+              ))}
+            </div>
+            <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200/80">
+              Showing {currentIndex + 1}–{Math.min(currentIndex + itemsPerView, SERVICES.length)} of {SERVICES.length} Services
+            </span>
           </div>
 
         </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import WhoAreWe from '../components/WhoAreWe';
 import ServicesCarousel from '../components/ServicesCarousel';
+import BeforeAfter from '../components/BeforeAfter';
 import SurgicalContouring from '../components/SurgicalContouring';
 import TestimonialsSlideshow from '../components/TestimonialsSlideshow';
 import ScheduleConsultation from '../components/ScheduleConsultation';
@@ -45,6 +46,9 @@ export default function HomePage({ onOpenBooking, onSelectTreatment, onOpenBCA }
         }}
         onOpenBooking={onOpenBooking}
       />
+
+      {/* Real Transformations Before & After Section */}
+      <BeforeAfter onOpenBooking={onOpenBooking} />
 
       {/* Surgical Weight Loss & Body Contouring Section matching user reference */}
       <SurgicalContouring onOpenBooking={onOpenBooking} />

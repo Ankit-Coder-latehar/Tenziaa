@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar, Clock, MapPin, User, Phone, Mail, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
-import Logo from './Logo';
+import { X, ChevronDown, CheckCircle2 } from 'lucide-react';
 
 export default function AppointmentModal({ isOpen, onClose, initialData = null }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    treatment: 'Free 3D Body Scan & Doctor Consultation',
-    clinicLocation: 'Mumbai - Bandra West Clinic',
-    date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
-    timeSlot: '11:00 AM - 12:00 PM',
-    notes: '',
+    location: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (initialData) {
-      if (initialData.treatment) {
-        setFormData((prev) => ({ ...prev, treatment: initialData.treatment }));
-      }
-      if (initialData.recommended) {
-        setFormData((prev) => ({
-          ...prev,
-          treatment: initialData.recommended,
-          notes: `Calculated BMI: ${initialData.bmi || 'N/A'}, Target Area: ${initialData.targetArea || 'General'}`,
-        }));
-      }
+    if (initialData?.location) {
+      setFormData((prev) => ({ ...prev, location: initialData.location }));
     }
   }, [initialData]);
+
+  // Handle escape key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleResetAndClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -40,7 +37,7 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
     setTimeout(() => {
       setIsLoading(false);
       setIsSubmitted(true);
-    }, 800);
+    }, 600);
   };
 
   const handleResetAndClose = () => {
@@ -49,242 +46,201 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-emerald-100 overflow-hidden transform transition-all max-h-[92vh] flex flex-col my-auto">
-        
-        {/* Modal Header */}
-        <div className="bg-gradient-to-r from-emerald-800 to-teal-800 p-5 sm:p-6 text-white relative shrink-0">
+    <div 
+      className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 md:p-6 animate-in fade-in duration-200"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) handleResetAndClose();
+      }}
+    >
+      {/* Modal Container */}
+      <div 
+        className="relative bg-white rounded-2xl sm:rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-100 overflow-hidden transform transition-all flex flex-col md:flex-row my-auto max-h-[94vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Left Column: Visual Banner */}
+        <div className="w-full md:w-[46%] bg-[#123e8f] text-white relative flex flex-col justify-between overflow-hidden shrink-0 min-h-[300px] md:min-h-[510px]">
+          {/* Top T&C label */}
+          <span className="absolute top-2.5 right-3 text-[10px] text-white/70 tracking-tight z-10 select-none">
+            *T&amp;C Apply
+          </span>
+
+          {/* Top Headline & Discount Badge */}
+          <div className="pt-6 px-6 sm:px-8 pb-2 z-10">
+            {/* Script Cursive Header */}
+            <div 
+              style={{ fontFamily: "'Great Vibes', cursive" }} 
+              className="text-white text-3xl sm:text-4xl font-normal leading-tight tracking-wide drop-shadow-sm"
+            >
+              Science that
+            </div>
+
+            {/* Sans Uppercase Heading */}
+            <div className="text-white font-extrabold text-lg sm:text-xl tracking-wider uppercase mt-0.5">
+              COOLS FAT AWAY
+            </div>
+
+            {/* Offer Metallic Pill */}
+            <div className="mt-3.5 inline-flex items-center justify-between w-full max-w-[230px] px-3.5 py-1.5 rounded bg-gradient-to-r from-slate-100 via-white to-slate-200 shadow-md border border-white/50 text-slate-900">
+              <div className="flex flex-col text-left leading-none">
+                <span className="text-[10px] sm:text-[11px] font-black tracking-tight text-slate-800 uppercase">
+                  COOLTECH
+                </span>
+                <span className="text-[8px] sm:text-[9px] font-bold text-slate-500 tracking-wider uppercase mt-0.5">
+                  UPTO
+                </span>
+              </div>
+              <div className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight leading-none ml-2">
+                50% OFF
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Model Image */}
+          <div className="relative w-full flex-1 flex items-end justify-center mt-2 overflow-hidden">
+            <img
+              src="/images/cooltech-model.jpg"
+              alt="Science that Cools Fat Away - Tenziaa Cooltech"
+              className="w-full h-[240px] sm:h-[280px] md:h-full object-cover object-top"
+              loading="eager"
+            />
+            {/* Gradient shadow overlay to seamlessly blend top background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#123e8f] via-transparent to-transparent h-16 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Right Column: Get in Touch Form */}
+        <div className="w-full md:w-[54%] bg-white p-6 sm:p-8 md:p-9 flex flex-col justify-center relative overflow-y-auto">
+          {/* Close 'X' Button */}
           <button
             type="button"
             onClick={handleResetAndClose}
-            className="absolute top-4 right-4 sm:top-5 sm:right-5 text-white/80 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+            className="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-slate-800 p-1.5 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
             aria-label="Close"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
 
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-emerald-200">
-              Zero Obligation
-            </span>
-          </div>
-          <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
-            Book Your Tenziaa™ Appointment
-          </h3>
-          <p className="text-emerald-100 text-xs sm:text-sm mt-1">
-            Includes complimentary 3D Ultrasound Body Fat Scan &amp; Consultation
-          </p>
-        </div>
-
-        {/* Modal Body */}
-        <div className="p-5 sm:p-8 overflow-y-auto flex-1">
           {isSubmitted ? (
-            <div className="text-center py-6 space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+            <div className="py-8 text-center space-y-4 animate-in fade-in duration-300">
+              <div className="w-16 h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h4 className="text-2xl font-extrabold text-slate-900">
-                Appointment Requested!
-              </h4>
-              <p className="text-slate-600 text-sm max-w-md mx-auto">
-                Thank you <strong className="text-slate-900">{formData.name}</strong>. Our senior clinic coordinator from Tenziaa will call you shortly at <strong className="text-emerald-800">{formData.phone}</strong> to confirm your slot.
+              <h3 className="text-2xl font-extrabold text-[#0d2a4a]">
+                Thank You!
+              </h3>
+              <p className="text-slate-600 text-sm max-w-xs mx-auto leading-relaxed">
+                Thank you <strong className="text-slate-900">{formData.name}</strong>. We have received your consultation request. Our clinic specialist will contact you shortly at <strong className="text-blue-700">{formData.phone}</strong>.
               </p>
-
-              <div className="bg-emerald-50/70 p-4 rounded-2xl border border-emerald-100 text-left text-xs space-y-1.5 max-w-md mx-auto">
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Service:</span>
-                  <span className="font-bold text-slate-900">{formData.treatment}</span>
+              {formData.location && (
+                <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-xs text-slate-600 max-w-xs mx-auto">
+                  <span className="text-slate-400 block mb-0.5">Selected Clinic:</span>
+                  <span className="font-semibold text-slate-800">{formData.location}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Clinic Center:</span>
-                  <span className="font-bold text-slate-900">{formData.clinicLocation}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">Date &amp; Time:</span>
-                  <span className="font-bold text-slate-900">{formData.date} ({formData.timeSlot})</span>
-                </div>
-              </div>
-
-              <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
-                <a
-                  href={`https://wa.me/919363721689?text=Hi%20Tenziaa,%20I%20just%20booked%20an%20appointment%20for%20${encodeURIComponent(formData.treatment)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-colors text-center"
-                >
-                  Send WhatsApp Confirmation
-                </a>
+              )}
+              <div className="pt-2">
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="px-6 py-3 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-50 font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                  className="px-8 py-2.5 rounded-xl bg-[#2888fd] hover:bg-[#1a7af5] text-white font-medium text-sm transition-all shadow-sm cursor-pointer"
                 >
-                  Done
+                  Close
                 </button>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              
-              {/* Full Name & Phone Number */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-bold text-slate-700 block mb-1">
-                    Your Full Name *
-                  </label>
-                  <div className="relative">
-                    <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Priya Sharma"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                    />
-                  </div>
-                </div>
+            <div>
+              {/* Form Title */}
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#0d2a4a] tracking-tight mb-5 sm:mb-6">
+                Get in Touch
+              </h2>
 
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name */}
                 <div>
-                  <label className="text-xs font-bold text-slate-700 block mb-1">
-                    Phone Number (WhatsApp) *
+                  <label htmlFor="touch-name" className="block text-slate-600 font-medium text-xs sm:text-sm mb-1.5">
+                    Name
                   </label>
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 98765 43210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="text-xs font-bold text-slate-700 block mb-1">
-                  Email Address
-                </label>
-                <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                   <input
+                    id="touch-name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 text-slate-800 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-white"
+                  />
+                </div>
+
+                {/* Phone Number */}
+                <div>
+                  <label htmlFor="touch-phone" className="block text-slate-600 font-medium text-xs sm:text-sm mb-1.5">
+                    Phone Number
+                  </label>
+                  <input
+                    id="touch-phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 text-slate-800 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-white"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label htmlFor="touch-email" className="block text-slate-600 font-medium text-xs sm:text-sm mb-1.5">
+                    Email
+                  </label>
+                  <input
+                    id="touch-email"
                     type="email"
-                    placeholder="priya@example.com"
+                    required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent"
-                  />
-                </div>
-              </div>
-
-              {/* Service Selection */}
-              <div>
-                <label className="text-xs font-bold text-slate-700 block mb-1">
-                  Interested Treatment / Consultation
-                </label>
-                <select
-                  value={formData.treatment}
-                  onChange={(e) => setFormData({ ...formData, treatment: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white"
-                >
-                  <option value="Free 3D Body Scan & Doctor Consultation">Free 3D Body Scan &amp; Doctor Consultation</option>
-                  <option value="CryoSculpt 360° Fat Freezing">CryoSculpt 360° Fat Freezing (Permanent Apoptosis)</option>
-                  <option value="UltraContour HIFU Skin Tightening">UltraContour HIFU Skin Tightening</option>
-                  <option value="EMSculpt Neo Muscle & Fat Dual-Action">EMSculpt Neo Muscle &amp; Fat Dual-Action</option>
-                  <option value="Laser Lipo-Refinement Protocol">Laser Lipo-Refinement Protocol</option>
-                  <option value="Medical Lymphatic Drainage & Detox">Medical Lymphatic Drainage &amp; Detox</option>
-                  <option value="Doctor-Guided Metabolic & Nutrition Reset">Doctor-Guided Metabolic &amp; Nutrition Reset</option>
-                </select>
-              </div>
-
-              {/* Clinic Location */}
-              <div>
-                <label className="text-xs font-bold text-slate-700 block mb-1">
-                  Preferred Clinic Branch
-                </label>
-                <div className="relative">
-                  <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                  <select
-                    value={formData.clinicLocation}
-                    onChange={(e) => setFormData({ ...formData, clinicLocation: e.target.value })}
-                    className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white"
-                  >
-                    <option value="Mumbai - Bandra West Clinic">Mumbai — Bandra West (Waterfield Rd)</option>
-                    <option value="Mumbai - South Mumbai (Nariman Point)">Mumbai — South Mumbai (Nariman Point)</option>
-                    <option value="Delhi NCR - Greater Kailash 2">Delhi NCR — Greater Kailash 2</option>
-                    <option value="Bangalore - Indiranagar">Bangalore — Indiranagar (100 Ft Rd)</option>
-                    <option value="Pune - Koregaon Park">Pune — Koregaon Park</option>
-                    <option value="Virtual Video Consultation (Doctor Online)">Virtual Video Consultation (Doctor Online)</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Date & Time Slot */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-xs font-bold text-slate-700 block mb-1">
-                    Preferred Date
-                  </label>
-                  <input
-                    type="date"
-                    min={new Date().toISOString().split('T')[0]}
-                    value={formData.date}
-                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white"
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 text-slate-800 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-white"
                   />
                 </div>
 
+                {/* Our Location */}
                 <div>
-                  <label className="text-xs font-bold text-slate-700 block mb-1">
-                    Time Slot
+                  <label htmlFor="touch-location" className="block text-slate-600 font-medium text-xs sm:text-sm mb-1.5">
+                    Our Location
                   </label>
-                  <select
-                    value={formData.timeSlot}
-                    onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white"
-                  >
-                    <option value="10:00 AM - 11:30 AM">10:00 AM - 11:30 AM (Morning)</option>
-                    <option value="11:30 AM - 01:00 PM">11:30 AM - 01:00 PM (Mid-day)</option>
-                    <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM (Afternoon)</option>
-                    <option value="04:30 PM - 06:30 PM">04:30 PM - 06:30 PM (Evening)</option>
-                    <option value="07:00 PM - 08:30 PM">07:00 PM - 08:30 PM (Late Slot)</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="touch-location"
+                      required
+                      value={formData.location}
+                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                      className="w-full appearance-none px-4 py-2.5 sm:py-3 pr-10 rounded-lg border border-slate-200 text-slate-700 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all bg-white cursor-pointer"
+                    >
+                      <option value="" disabled>Select a location</option>
+                      <option value="Dharmapuri Main Branch">Dharmapuri Main Branch (Near Bus Stand)</option>
+                      <option value="Salem Main Clinic">Salem Main Clinic (Near New Bus Stand)</option>
+                      <option value="Chennai — Alwarpet Clinic">Chennai — Alwarpet Clinic</option>
+                      <option value="Coimbatore — Race Course Rd">Coimbatore — Race Course Rd</option>
+                      <option value="Bangalore — Indiranagar">Bangalore — Indiranagar (100 Ft Rd)</option>
+                      <option value="Bangalore — Koramangala">Bangalore — Koramangala</option>
+                      <option value="Mumbai — Bandra West">Mumbai — Bandra West (Waterfield Rd)</option>
+                      <option value="Pune — Koregaon Park">Pune — Koregaon Park</option>
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  </div>
                 </div>
-              </div>
 
-              {/* Direct helpline reminder */}
-              <div className="bg-emerald-50/70 p-3 rounded-xl border border-emerald-100 flex items-center justify-between text-xs text-emerald-900">
-                <span>Direct Helpline: <strong className="text-emerald-950 font-bold">+91 93637 21689</strong></span>
-                <span className="text-[11px] text-emerald-700">Immediate Phone Assistance</span>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-4 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
-              >
-                {isLoading ? (
-                  <span>Reserving Slot...</span>
-                ) : (
-                  <>
-                    <span>Confirm &amp; Reserve Free Appointment</span>
-                    <Sparkles className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-
-              <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 text-center">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Zero cancellation fees. Your details are safe with us.</span>
-              </div>
-            </form>
+                {/* Submit Button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full py-3 sm:py-3.5 px-6 rounded-xl bg-[#2888fd] hover:bg-[#1a7af5] active:bg-[#0f6ee8] text-white font-semibold text-base sm:text-lg shadow-sm hover:shadow transition-all duration-200 cursor-pointer disabled:opacity-60"
+                  >
+                    {isLoading ? 'Submitting...' : 'Submit'}
+                  </button>
+                </div>
+              </form>
+            </div>
           )}
         </div>
-
       </div>
     </div>
   );

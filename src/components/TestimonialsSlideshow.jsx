@@ -4,69 +4,69 @@ import { Star, ChevronLeft, ChevronRight, Quote, CheckCircle2, Sparkles } from '
 const REVIEWS = [
   {
     id: 1,
-    name: 'Priya Venkatesh',
+    name: 'Monoj Kumar',
     role: 'Verified Client',
     location: 'Salem',
     rating: 5,
     treatment: 'V-Fit Contour & RF',
     result: '-4.5 Inches Lost',
     date: 'Verified 2 weeks ago',
-    review: 'I was struggling with post-pregnancy tummy fat for over 3 years. The V-Fit Contour and RF treatments at Tenziaa Clinic Salem reshaped my waistline completely. I lost 4.5 inches in 6 weeks with zero downtime and absolutely no pain!',
+    review: 'The biggest challenge we faced was that our happiest customers were often the quietest. Tenzia has given them a voice. It’s a seamless, non-intrusive way to prompt our clients for their honest feedback, and the response rate has been incredible. Seeing the steady flow of genuine stories from our clients has not only boosted our online ranking but also boosted our teams morale. It’s an elegant solution that focuses on what matters most—the actual experience of the customer. If you want to build a brand based on real trust, Tenzia is the tool to use',
   },
   {
     id: 2,
-    name: 'Karthik Ramanathan',
-    role: 'Software Architect',
-    location: 'Salem',
+    name: 'Narasimman N',
+    role: 'Client',
+    location: 'Chennai',
     rating: 5,
     treatment: 'AI Robotic Sonic Slim',
     result: '-8.2 kg Weight Loss',
     date: 'Verified 3 weeks ago',
-    review: 'Being a busy professional, I didn’t have hours for daily gym workouts. Tenziaa Clinic’s AI Robotic Sonic Slim and CryoSculpt melted my stubborn love handles. The team and doctors here are exceptionally warm and scientific.',
+    review: 'I’m extremely satisfied with the results from Tenziaa Wellness.',
   },
   {
     id: 3,
-    name: 'Deepa Sundaram',
-    role: 'Educator',
+    name: 'Arun Kumar',
+    role: 'Client',
     location: 'Salem',
     rating: 5,
     treatment: 'Skin Fusion RF Sculpting',
     result: 'Firm & Sculpted Skin',
     date: 'Verified 1 month ago',
-    review: 'The clinic ambiance is so serene with its soothing green and white theme. I felt thoroughly pampered during my skin tightening sessions. My loose abdominal skin is noticeably firmer and my confidence is fully restored!',
+    review: 'My experience with Tenziaa Wellness has been excellent. From the first consultation, I felt comfortable and confident in their approach. The treatments, diet guidance, and regular follow-ups helped me achieve visible fat loss and better energy levels.',
   },
   {
     id: 4,
-    name: 'Rajeshwari Murugan',
-    role: 'Entrepreneur',
+    name: 'Anthony',
+    role: 'Client',
     location: 'Salem',
     rating: 5,
     treatment: 'Personalised Slimming Plan',
     result: '-5.0 Inches Waistline',
     date: 'Verified 1 month ago',
-    review: 'Zero side effects, just as promised! The personalized diet guidance and non-surgical contouring helped me reduce 5 inches from my hips and abdomen. The staff is polite and very attentive to every question.',
+    review: 'I recently completed six sessions of EM Sculpt at Tenziaa Wellness and Aesthetic Clinic over a three-month period, and I am very pleased with the outcome. From the first few sessions, I could feel my muscles working deeply, and gradually I noticed better toning and improved strength in my body.',
   },
   {
     id: 5,
-    name: 'Dr. Anitha Subramaniam',
-    role: 'Medical Practitioner',
+    name: 'Sakthi Vel',
+    role: 'Client',
     location: 'Salem',
     rating: 5,
     treatment: 'CryoSculpt 360°',
     result: '-3.8 Inches Off Flanks',
     date: 'Verified 2 months ago',
-    review: 'As a medical doctor, safety and clinical evidence come first for me. Tenziaa uses genuine US-FDA cleared technologies. The centimeter-by-centimeter reduction is tracked with medical precision. Outstanding experience!',
+    review: 'I had a very good experience at Tenziaa Wellness. The team is friendly, supportive, and professional throughout the weight loss journey. The personalized diet guidance and wellness sessions helped me achieve noticeable fat loss and improved my overall confidence.',
   },
   {
     id: 6,
-    name: 'Vignesh Kumar',
-    role: 'Business Owner',
+    name: 'Mathi',
+    role: 'Client',
     location: 'Salem',
     rating: 5,
     treatment: 'Metabolic Detox Protocol',
     result: '-11.0 kg Overall Loss',
     date: 'Verified 2 months ago',
-    review: 'I lost 11 kg in 2 months with their combination plan. No crash diets, no harsh pills, just pure science-backed treatments and deeply caring doctors. Tenziaa Clinic has changed my lifestyle for the better.',
+    review: 'I had a very positive experience with Tenziaa Wellness and Aesthetic Clinic for my weight loss and fat loss journey. The team was supportive, professional, and guided me with the right treatments and lifestyle advice throughout the process.'
   },
 ];
 
@@ -142,10 +142,10 @@ export default function TestimonialsSlideshow() {
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-emerald-50/60 rounded-full blur-2xl pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Top Header Row matching user's reference image */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-12 sm:mb-16">
-          
+
           {/* Left: Smiling Woman in Namaste pose with mandala */}
           <div className="md:col-span-4 flex justify-center md:justify-start">
             <div className="relative w-40 h-40 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-white shadow-xl bg-emerald-50 flex items-center justify-center">
@@ -280,11 +280,10 @@ export default function TestimonialsSlideshow() {
                 key={idx}
                 type="button"
                 onClick={() => setCurrentIndex(idx)}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  idx === currentIndex
-                    ? 'w-7 h-2.5 bg-emerald-600'
-                    : 'w-2.5 h-2.5 bg-slate-300 hover:bg-emerald-300'
-                }`}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${idx === currentIndex
+                  ? 'w-7 h-2.5 bg-emerald-600'
+                  : 'w-2.5 h-2.5 bg-slate-300 hover:bg-emerald-300'
+                  }`}
                 aria-label={`Go to review page ${idx + 1}`}
               />
             ))}

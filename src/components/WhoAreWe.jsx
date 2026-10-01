@@ -74,10 +74,18 @@ export default function WhoAreWe() {
       <div className="absolute top-10 right-0 w-80 h-80 bg-emerald-50/50 rounded-full blur-2xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
+        {/* Top Middle Center Section Tag */}
+        <div className="text-center mb-8 sm:mb-12">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+            About us
+          </span>
+        </div>
+
         {/* Top Header Row matching the user reference layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
-          
+
           {/* Left: Subtitle, Heading and Red/Emerald Accent Bar */}
           <div className="lg:col-span-4 space-y-2">
             <span className="text-sm sm:text-base font-serif text-slate-700 tracking-wide block">
@@ -95,14 +103,14 @@ export default function WhoAreWe() {
           {/* Middle Paragraph */}
           <div className="lg:col-span-4">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Your trusted destination for safe, effective, and result-driven weight loss and inch-loss treatments. We understand that weight gain is not just about appearance, it affects confidence, lifestyle, and overall health. At Tenziaa, we focus on real transformations, not temporary fixes.
+              Tenziaa is a clinic built around one goal: helping you reshape your body safely and confidently. We know that stubborn fat and weight gain are about more than looks. They shape how you feel, how you dress, and how you live. That's why every plan is designed for lasting progress rather than quick fixes.
             </p>
           </div>
 
           {/* Right Paragraph */}
           <div className="lg:col-span-4">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Easily the Slimming &amp; Body Contouring Clinic in Salem, which comprises advanced AI slimming technologies, expert guidance, and personalized care to help you achieve your dream body in a healthy and sustainable way.
+              As Salem's first dedicated slimming and body contouring clinic, we combine advanced slimming technologies, expert guidance, and personalized care to help you achieve your dream body in a healthy and sustainable way.
             </p>
           </div>
 

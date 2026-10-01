@@ -4,32 +4,11 @@ import {
   ArrowRight, Activity, MessageSquare, ShieldCheck, Sparkles 
 } from 'lucide-react';
 
-const BRANCHES_BY_STATE = {
-  'Tamil Nadu': [
-    'Dharmapuri Main Branch (Near Bus Stand)',
-    'Salem Main Clinic (Near New Bus Stand)',
-    'Chennai — Alwarpet Clinic',
-    'Coimbatore — Race Course Rd',
-  ],
-  'Karnataka': [
-    'Bangalore — Indiranagar 100ft Rd',
-    'Bangalore — Koramangala',
-  ],
-  'Maharashtra': [
-    'Mumbai — Bandra West (Waterfield Rd)',
-    'Pune — Koregaon Park',
-  ],
-  'Online / Virtual': [
-    'Virtual Video BCA Doctor Consultation',
-  ]
-};
-
 export default function BCAModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    state: 'Tamil Nadu',
-    branch: 'Dharmapuri Main Branch (Near Bus Stand)',
+    location: 'Dharmapuri, Tamil Nadu',
     dateTime: '',
   });
 
@@ -37,16 +16,6 @@ export default function BCAModal({ isOpen, onClose }) {
   const [isLoading, setIsLoading] = useState(false);
 
   if (!isOpen) return null;
-
-  const handleStateChange = (e) => {
-    const selectedState = e.target.value;
-    const branches = BRANCHES_BY_STATE[selectedState] || [];
-    setFormData({
-      ...formData,
-      state: selectedState,
-      branch: branches[0] || '',
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,8 +30,6 @@ export default function BCAModal({ isOpen, onClose }) {
     setIsSubmitted(false);
     onClose();
   };
-
-  const branches = BRANCHES_BY_STATE[formData.state] || [];
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 md:p-8 animate-in fade-in duration-200">
@@ -106,11 +73,11 @@ export default function BCAModal({ isOpen, onClose }) {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-slate-500">Special Offer Fee:</span>
-                <span className="font-extrabold text-emerald-800">₹210 <span className="text-xs font-normal text-slate-400 line-through">₹300</span> (30% OFF)</span>
+                <span className="font-extrabold text-emerald-800">₹350 <span className="text-xs font-normal text-slate-400 line-through">₹500</span> (30% OFF)</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Center Branch:</span>
-                <span className="font-bold text-slate-900 truncate max-w-[220px]">{formData.branch}</span>
+                <span className="text-slate-500">Clinic Location:</span>
+                <span className="font-bold text-slate-900 truncate max-w-[220px]">{formData.location}</span>
               </div>
               {formData.dateTime && (
                 <div className="flex justify-between items-center">
@@ -122,7 +89,7 @@ export default function BCAModal({ isOpen, onClose }) {
 
             <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href={`https://wa.me/919363721689?text=Hi%20Tenziaa%20Clinic,%20I%20have%20booked%20my%20BCA%20Consultation%20for%20${encodeURIComponent(formData.branch)}`}
+                href={`https://wa.me/919363721689?text=Hi%20Tenziaa%20Clinic,%20I%20have%20booked%20my%20BCA%20Consultation%20for%20${encodeURIComponent(formData.location)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-7 py-3.5 rounded-full bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white font-extrabold text-xs uppercase tracking-wider shadow-md transition-all text-center"
@@ -168,10 +135,10 @@ export default function BCAModal({ isOpen, onClose }) {
 
                   <div className="flex items-center gap-2.5">
                     <span className="text-slate-400 text-base line-through font-semibold">
-                      ₹300
+                      ₹500
                     </span>
                     <span className="text-3xl font-extrabold text-slate-900 tracking-tight">
-                      ₹210
+                      ₹350
                     </span>
                     <span className="px-2.5 py-0.5 rounded-full bg-[#84cc16] text-slate-950 font-extrabold text-xs shadow-xs">
                       30% OFF
@@ -219,53 +186,37 @@ export default function BCAModal({ isOpen, onClose }) {
                   </div>
                 </div>
 
-                {/* State & Branch */}
+                {/* Fixed Clinic Location & Date/Time */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
                     <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                      Select State
+                      Clinic Location
                     </label>
-                    <select
-                      value={formData.state}
-                      onChange={handleStateChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-[#84cc16] focus:ring-2 focus:ring-[#84cc16]/20 text-xs sm:text-sm bg-white text-slate-800 outline-none cursor-pointer"
-                    >
-                      {Object.keys(BRANCHES_BY_STATE).map((st) => (
-                        <option key={st} value={st}>{st}</option>
-                      ))}
-                    </select>
+                    <div className="relative flex items-center">
+                      <input
+                        type="text"
+                        readOnly
+                        value={formData.location}
+                        className="w-full px-4 py-2.5 pr-10 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold select-none cursor-default outline-none shadow-xs"
+                      />
+                      <MapPin className="w-4 h-4 text-[#65a30d] absolute right-3.5" />
+                    </div>
                   </div>
 
                   <div>
                     <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                      Select Branch
+                      Select Date &amp; Time
                     </label>
-                    <select
-                      value={formData.branch}
-                      onChange={(e) => setFormData({ ...formData, branch: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:border-[#84cc16] focus:ring-2 focus:ring-[#84cc16]/20 text-xs sm:text-sm bg-white text-slate-800 outline-none cursor-pointer"
-                    >
-                      {branches.map((br) => (
-                        <option key={br} value={br}>{br}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Date & Time */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                    Select Date &amp; Time
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="datetime-local"
-                      required
-                      min={new Date().toISOString().slice(0, 16)}
-                      value={formData.dateTime}
-                      onChange={(e) => setFormData({ ...formData, dateTime: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-[#84cc16] focus:ring-2 focus:ring-[#84cc16]/20 text-xs sm:text-sm bg-white text-slate-800 outline-none"
-                    />
+                    <div className="relative">
+                      <input
+                        type="datetime-local"
+                        required
+                        min={new Date().toISOString().slice(0, 16)}
+                        value={formData.dateTime}
+                        onChange={(e) => setFormData({ ...formData, dateTime: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-[#84cc16] focus:ring-2 focus:ring-[#84cc16]/20 text-xs sm:text-sm bg-white text-slate-800 outline-none"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -303,10 +254,10 @@ export default function BCAModal({ isOpen, onClose }) {
                 <div className="space-y-1.5">
                   <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-[#a3e635] uppercase">
                     <Activity className="w-4 h-4 text-[#84cc16]" />
-                    <span>Booking Process</span>
+                    <span>How It Works</span>
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
-                    Simple Steps To Know Your Body
+                    3 Simple Steps to Understand Your Body
                   </h3>
                 </div>
 
@@ -319,9 +270,9 @@ export default function BCAModal({ isOpen, onClose }) {
                       <MessageSquare className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Book Your BCA Test</h4>
+                      <h4 className="text-sm font-bold text-white">1. Book Your BCA Assessment</h4>
                       <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                        Fill in your details, choose your preferred branch and time slot to schedule your Body Composition Analysis consultation.
+                        Enter your details and select your preferred date and time to book your Body Composition Analysis.
                       </p>
                     </div>
                   </div>
@@ -332,9 +283,9 @@ export default function BCAModal({ isOpen, onClose }) {
                       <Calendar className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Confirm Your Appointment</h4>
+                      <h4 className="text-sm font-bold text-white">2. Confirm Your Visit</h4>
                       <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                        Our team will contact you to confirm your booking and guide you through the BCA testing procedure.
+                        Our team will get in touch with you to confirm your appointment and explain what to expect during the assessment.
                       </p>
                     </div>
                   </div>
@@ -345,9 +296,9 @@ export default function BCAModal({ isOpen, onClose }) {
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white">Get Your Personalized Health Insights</h4>
+                      <h4 className="text-sm font-bold text-white">3. Understand Your Body Better</h4>
                       <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                        Visit the clinic for your Body Composition Analysis, understand your fat, muscle, and metabolic score, and receive expert guidance tailored to your goals.
+                        Visit Tenziaa for your BCA test and get insights into your body fat, muscle mass, metabolic health, and more, followed by personalised guidance based on your goals.
                       </p>
                     </div>
                   </div>

@@ -85,35 +85,34 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
 
             {/* Subtext */}
             <p className="text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed">
-              Target stubborn fat, tighten loose skin, and tone muscles with US-FDA approved technologies.
-              Personalized medical body shaping designed for your lifestyle with <strong className="text-emerald-900 font-semibold">zero downtime</strong>.
+              Smarter body shaping for real results. Tenziaa combines clinically proven technology with doctor-led plans to help you lose inches, tone up, and feel confident <strong className="text-emerald-900 font-semibold"> without a single day off.</strong>.
             </p>
 
             {/* Key Value Points */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
               <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Zero Needles or Cuts</span>
+                <span>Non-Invasive, No Incisions</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Lunchtime 45-Min Sessions</span>
+                <span>Quick 45-Minute Visits</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Doctor Supervised</span>
+                <span>Expert Medical Guidance</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>Permanent Fat Cell Loss</span>
+                <span>Visible Inch Loss</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>No Exercise Required</span>
+                <span>Comfortable, Pain-Free Care</span>
               </div>
               <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>US-FDA Cleared Tech</span>
+                <span>Advanced US-FDA Cleared Devices</span>
               </div>
             </div>
 
@@ -263,8 +262,8 @@ export default function Hero({ onOpenBooking, onScrollToConsultation }) {
                         type="button"
                         onClick={() => goToSlide(idx)}
                         className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlide
-                            ? 'w-8 bg-emerald-400'
-                            : 'w-2 bg-white/60 hover:bg-white'
+                          ? 'w-8 bg-emerald-400'
+                          : 'w-2 bg-white/60 hover:bg-white'
                           }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
