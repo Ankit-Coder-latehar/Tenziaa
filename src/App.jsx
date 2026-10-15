@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import LoaderScreen from './components/LoaderScreen';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AppointmentModal from './components/AppointmentModal';
@@ -11,7 +10,6 @@ import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [bcaModalOpen, setBcaModalOpen] = useState(false);
   const [bookingInitialData, setBookingInitialData] = useState(null);
@@ -23,8 +21,6 @@ export default function App() {
   };
 
   return (
-    <>
-      {isLoading && <LoaderScreen onFinish={() => setIsLoading(false)} />}
       <div className="min-h-screen bg-white text-slate-800 font-sans selection:bg-emerald-100 selection:text-emerald-900 flex flex-col overflow-x-clip w-full">
       {/* Header with route navigation & BCA popup opener */}
       <Header 
@@ -95,6 +91,5 @@ export default function App() {
         }}
       />
     </div>
-    </>
   );
 }

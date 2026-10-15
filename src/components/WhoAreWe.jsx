@@ -1,69 +1,31 @@
 import React from 'react';
-import { ClipboardList, ShieldBan, UserCheck, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ClipboardCheck, ShieldCheck, Stethoscope, HeartHandshake, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function WhoAreWe() {
   const cards = [
     {
-      icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-          <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
-          <path d="M9 14h.01" />
-          <path d="M13 14h2" />
-          <path d="M9 18h.01" />
-          <path d="M13 18h2" />
-          {/* subtle apple / leaf accent */}
-          <circle cx="16" cy="11" r="2.5" />
-          <path d="M16 8.5c.5-.8 1.5-.8 1.5-.8" />
-        </svg>
-      ),
-      title: 'Personalised Weight Loss plans',
-      desc: 'Customized protocols calibrated to your metabolic rate, lifestyle, and inch loss goals.',
+      icon: <ClipboardCheck className="w-8 h-8" strokeWidth={1.8} />,
+      title: 'Personalised Wellness Plans',
+      desc: 'Treatment plans tailored to your individual goals, lifestyle, and consultation findings.',
+      tag: 'Personalised Approach',
     },
     {
-      icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          {/* No injection / non-surgical syringe crossed out */}
-          <path d="m18 2 4 4" />
-          <path d="m17 7 3-3" />
-          <path d="M19 9 8.7 19.3c-.4.4-1 .6-1.6.6H3v-4.1c0-.6.2-1.2.6-1.6L14 3.9" />
-          <path d="m9 11 4 4" />
-          <line x1="2" y1="2" x2="22" y2="22" stroke="#EF4444" strokeWidth="2.2" />
-        </svg>
-      ),
-      title: 'Non Surgical & Safe Treatments',
-      desc: '100% non-invasive, US-FDA cleared technologies with zero incisions, needles, or downtime.',
+      icon: <ShieldCheck className="w-8 h-8" strokeWidth={1.8} />,
+      title: 'Non-Surgical Treatment Options',
+      desc: 'Explore non-invasive treatment options with guidance from qualified healthcare professionals.',
+      tag: 'Care-Focused Treatments',
     },
     {
-      icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          {/* Experienced doctors & medical team */}
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-          {/* Stethoscope touch */}
-          <path d="M9 13v2a2 2 0 0 0 4 0v-2" />
-        </svg>
-      ),
-      title: 'Experienced Doctors',
-      desc: 'Supervised directly by certified aesthetic physicians and clinical dietitians.',
+      icon: <Stethoscope className="w-8 h-8" strokeWidth={1.8} />,
+      title: 'Professional Medical Guidance',
+      desc: 'Receive individual assessment and treatment guidance from appropriately qualified medical professionals.',
+      tag: 'Expert-Led Consultation',
     },
     {
-      icon: (
-        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          {/* Person happy, beaming with light sparks / no side effects */}
-          <circle cx="12" cy="7" r="4" />
-          <path d="M6 21v-2a6 6 0 0 1 12 0v2" />
-          <path d="M12 1v2" />
-          <path d="M4 8l1.5.5" />
-          <path d="M20 8l-1.5.5" />
-          <path d="M5 3l1 1" />
-          <path d="M19 3l-1 1" />
-        </svg>
-      ),
-      title: 'No Side Effects',
-      desc: 'Clinically proven biological elimination of fat cells naturally via the lymphatic system.',
+      icon: <HeartHandshake className="w-8 h-8" strokeWidth={1.8} />,
+      title: 'Comfortable, Patient-Centred Care',
+      desc: 'Experience treatments in a supportive, welcoming clinical environment designed around your comfort and safety.',
+      tag: 'Patient-Centred Care',
     },
   ];
 
@@ -89,7 +51,7 @@ export default function WhoAreWe() {
           {/* Left: Subtitle, Heading and Red/Emerald Accent Bar */}
           <div className="lg:col-span-4 space-y-2">
             <span className="text-sm sm:text-base font-serif text-slate-700 tracking-wide block">
-              Tenziaa Clinic Salem
+              Tenziaa Dharmapuri
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
               Who are we?
@@ -110,7 +72,7 @@ export default function WhoAreWe() {
           {/* Right Paragraph */}
           <div className="lg:col-span-4">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              As Salem's first dedicated slimming and body contouring clinic, we combine advanced slimming technologies, expert guidance, and personalized care to help you achieve your dream body in a healthy and sustainable way.
+              As Dharmapuri's first dedicated slimming and body contouring clinic, we combine advanced slimming technologies, expert guidance, and personalized care to help you achieve your dream body in a healthy and sustainable way.
             </p>
           </div>
 
@@ -141,10 +103,10 @@ export default function WhoAreWe() {
                 {item.desc}
               </p>
 
-              {/* Verified check badge */}
-              <div className="mt-4 pt-3 border-t border-emerald-100/60 w-full flex items-center justify-center gap-1.5 text-[11px] font-semibold text-emerald-700">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Clinically Guaranteed</span>
+              {/* Verified check badge / tag */}
+              <div className="mt-4 pt-3 border-t border-emerald-100/60 w-full flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-emerald-700">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#65a30d]" />
+                <span>{item.tag}</span>
               </div>
             </div>
           ))}

@@ -3,108 +3,40 @@ import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, CheckCircle2 } from 'l
 
 const SERVICES = [
   {
-    id: 'weight-loss',
-    title: 'Weight Loss',
+    id: 'personalised-weight-management',
+    title: 'Personalised Weight Management',
     image: '/images/hero-clinic.jpg',
-    description: 'Doctor-supervised, personalized clinical weight loss programs combining metabolic calibration and lifestyle guidance for sustainable fat reduction.',
-    category: 'Weight Loss',
-    highlights: ['Doctor-Supervised Protocol', 'Metabolic Rate Optimization', 'Sustainable Fat Reduction'],
+    description: 'A guided approach to weight management with personalised plans based on your goals, lifestyle, and professional assessment.',
+    category: 'Weight Management',
+    highlights: [
+      'Individualised Wellness Plans',
+      'Lifestyle & Nutrition Guidance',
+      'Progress Monitoring',
+    ],
   },
   {
-    id: 'ayurvedic-kizhi-therapy',
-    title: 'Ayurvedic Kizhi Therapy',
-    image: '/images/ayurvedic-kizhi.jpg',
-    description: 'Traditional warm herbal bolus (Potli) therapy infused with medicinal oils to alleviate stiffness, flush lymphatic toxins, and tone tissues.',
-    category: 'Ayurvedic Wellness',
-    highlights: ['Warm Herbal Potli Massage', 'Deep Detox & Fluid Flushing', 'Improves Blood Circulation'],
-  },
-  {
-    id: 'advanced-cryo-treatment',
-    title: 'Advanced Cryo Treatment',
-    image: '/images/treatment-cryo.jpg',
-    description: 'Targeted sub-zero cooling that crystallizes and permanently eliminates stubborn fat cells naturally with zero surgery or downtime.',
-    category: 'Cryolipolysis',
-    highlights: ['US-FDA Cleared Technology', 'Permanent Fat Cell Apoptosis', 'Non-Invasive & Zero Downtime'],
-  },
-  {
-    id: 'inch-loss',
-    title: 'Inch Loss',
+    id: 'non-invasive-body-contouring',
+    title: 'Non-Invasive Body Contouring',
     image: '/images/rf-sculpting.jpg',
-    description: 'Targeted spot fat reduction protocols designed to trim circumference across waist, belly, thighs, and flanks for visible centimetre loss.',
-    category: 'Targeted Slimming',
-    highlights: ['Targeted Waist & Thigh Trim', 'Immediate Measurable Loss', 'Improves Skin Tightness'],
+    description: 'Explore non-surgical body contouring options designed to address specific body areas following a suitability assessment.',
+    category: 'Inch Loss',
+    highlights: [
+      'Targeted Body Area Treatments',
+      'Personalised Treatment Planning',
+      'Progress Tracking',
+    ],
   },
   {
-    id: 'figure-correction',
-    title: 'Figure Correction',
-    image: '/images/abdominoplasty.jpg',
-    description: 'Comprehensive aesthetic body reshaping that aligns natural proportions, sculpts curves, and restores balanced silhouette contours.',
+    id: 'tenziaa-frost',
+    title: 'Tenziaa Frost',
+    image: '/images/treatment-cryo.jpg',
+    description: 'A non-surgical body-contouring procedure that uses controlled cooling to target localised fat deposits in selected body areas following a professional suitability assessment.',
     category: 'Body Contouring',
-    highlights: ['Proportion & Curve Sculpting', 'Custom Aesthetic Mapping', 'Enhanced Body Silhouette'],
-  },
-  {
-    id: 'body-toning',
-    title: 'Body Toning',
-    image: '/images/wellness-fitness.jpg',
-    description: 'High-intensity electromagnetic and acoustic stimulation to firm lax skin, define core muscles, and sculpt smooth contours.',
-    category: 'Muscle & Tone',
-    highlights: ['Firms Loose & Sagging Skin', 'Builds Lean Muscle Definition', 'Smooths Cellulite Dimples'],
-  },
-  {
-    id: 'fairness-treatment',
-    title: 'Fairness Treatment',
-    image: '/images/cooltech-model.jpg',
-    description: 'Advanced dermatological brightening and pigment-correcting therapies that even skin tone, restore luminous glow, and reverse tanning.',
-    category: 'Skin Radiance',
-    highlights: ['Melanin Pigment Balancing', 'Luminous Complexion Glow', 'Safe & Dermatologist-Guided'],
-  },
-  {
-    id: 'anti-ageing-treatment',
-    title: 'Anti-ageing Treatment',
-    image: '/images/testimonials-woman.jpg',
-    description: 'Collagen-boosting therapies that lift sagging dermal layers, restore natural elasticity, and revitalize youthful facial vitality.',
-    category: 'Age Reversal',
-    highlights: ['Deep Collagen Stimulation', 'Firms Sagging Skin Laxity', 'Youthful Natural Radiance'],
-  },
-  {
-    id: 'deep-scar-removal',
-    title: 'Deep Scar Removal',
-    image: '/images/deep-scar-removal.jpg',
-    description: 'Clinical fractional laser and micro-resurfacing treatments that smooth stubborn acne scars, surgical marks, and textural irregularities.',
-    category: 'Skin Correction',
-    highlights: ['Fractional Laser Resurfacing', 'Minimizes Acne & Tissue Scars', 'Promotes Healthy Skin Renewal'],
-  },
-  {
-    id: 'under-eye-dark-circle',
-    title: 'Under Eye Dark Circle',
-    image: '/images/under-eye.jpg',
-    description: 'Specialized periorbital micro-infusion and lymphatic drainage to alleviate pigmentation, reduce puffiness, and brighten tired eyes.',
-    category: 'Eye Contour Care',
-    highlights: ['Reduces Pigment & Hollows', 'Diminishes Under-Eye Bags', 'Refreshes Tired Looking Eyes'],
-  },
-  {
-    id: 'wrinkles-treatment',
-    title: 'Wrinkles Treatment',
-    image: '/images/chin-reduction.jpg',
-    description: 'Targeted line-smoothing technologies that soften forehead creases, crow’s feet, and smile lines for naturally supple, rejuvenated skin.',
-    category: 'Skin Smoothing',
-    highlights: ['Softens Fine Lines & Creases', 'Boosts Elastin Production', 'Smooth & Supple Texture'],
-  },
-  {
-    id: 'hair-transplant',
-    title: 'Hair Transplant',
-    image: '/images/hair-transplant.jpg',
-    description: 'Precision Follicular Unit Extraction (FUE) graft relocation delivering natural hairline reconstruction and permanent hair density.',
-    category: 'Hair Restoration',
-    highlights: ['Modern FUE Micro-Grafts', 'Permanent Natural Hairline', 'High Density & Fast Healing'],
-  },
-  {
-    id: 'hair-regrowth',
-    title: 'Hair Regrowth',
-    image: '/images/clinic-suite.jpg',
-    description: 'Doctor-administered PRP, growth factor concentrate, and mesotherapy to awaken dormant follicles and arrest active thinning.',
-    category: 'Trichology',
-    highlights: ['Stimulates Dormant Follicles', 'Arrests Active Hair Fall', 'Thickens Thinning Strands'],
+    highlights: [
+      'Targets Localised Fat Deposits',
+      'Non-Surgical Treatment Approach',
+      'Personalised Body-Contouring Plan',
+    ],
   },
 ];
 
@@ -179,18 +111,18 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header matching user image */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="text-base sm:text-lg font-serif text-slate-700 tracking-wide block mb-2">
             Our Services
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Specialized Slimming, Skin &amp; Hair Treatments
+            Specialized Slimming Treatments
           </h2>
           <div className="mt-3 flex items-center justify-center gap-2 text-xs font-semibold text-emerald-800">
             <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Doctor-Supervised • US-FDA Cleared Technologies • Scientifically Proven</span>
+            <span>Doctor-Supervised • Scientifically Proven</span>
           </div>
         </div>
 
@@ -203,25 +135,27 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Navigation Arrow Left */}
-          <button
-            type="button"
-            onClick={handlePrev}
-            className="absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-          </button>
-
-          {/* Navigation Arrow Right */}
-          <button
-            type="button"
-            onClick={handleNext}
-            className="absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-          </button>
+          {/* Navigation Arrows */}
+          {maxIndex > 0 && (
+            <>
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            </>
+          )}
 
           {/* Sliding Cards Track */}
           <div className="overflow-hidden py-4">
@@ -284,7 +218,7 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
                         }}
                         className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-slate-950 text-white hover:bg-emerald-700 hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg group-hover:scale-105 active:scale-95 cursor-pointer"
                       >
-                        <span>READ MORE</span>
+                        <span>Book Consultation</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
@@ -295,27 +229,28 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
             </div>
           </div>
 
-          {/* Bottom Dots & Counter Indicator */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="flex items-center gap-1.5 flex-wrap justify-center max-w-full">
-              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`transition-all duration-300 rounded-full cursor-pointer ${
-                    idx === currentIndex
+          {/* Bottom Dots & Counter Indicator (shown on mobile/tablet when sliding is needed) */}
+          {maxIndex > 0 && (
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex items-center gap-1.5 flex-wrap justify-center max-w-full">
+                {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${idx === currentIndex
                       ? 'w-7 h-2.5 bg-emerald-600'
                       : 'w-2 h-2 bg-slate-300 hover:bg-emerald-300'
-                  }`}
-                  aria-label={`Go to slide page ${idx + 1}`}
-                />
-              ))}
+                      }`}
+                    aria-label={`Go to slide page ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200/80">
+                Showing {currentIndex + 1}–{Math.min(currentIndex + itemsPerView, SERVICES.length)} of {SERVICES.length} Services
+              </span>
             </div>
-            <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200/80">
-              Showing {currentIndex + 1}–{Math.min(currentIndex + itemsPerView, SERVICES.length)} of {SERVICES.length} Services
-            </span>
-          </div>
+          )}
 
         </div>
 

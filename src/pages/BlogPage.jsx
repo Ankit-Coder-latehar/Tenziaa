@@ -7,216 +7,16 @@ import {
 } from 'lucide-react';
 
 const CATEGORIES = [
-  'All Posts',
-  'Fat Freezing',
-  'Non-Invasive Sculpting',
-  'Skin Tightening',
-  'Clinical Diagnosis',
-  'Diet & Nutrition'
+  'Weight Management',
+  'Inch Loss & Body Contouring',
+  'Nutrition & Healthy Lifestyle',
+  'Treatment Guides',
 ];
 
-const BLOG_POSTS = [
-  {
-    id: 'cryosculpt-vs-lipo',
-    title: 'CryoSculpt 360° vs. Traditional Liposuction: What Science & Surgeons Say in 2026',
-    category: 'Fat Freezing',
-    featured: true,
-    image: '/images/treatment-cryo.jpg',
-    readTime: '5 min read',
-    date: 'Sep 24, 2026',
-    author: {
-      name: 'Dr. Arvind Swaminathan',
-      role: 'Chief Aesthetic Physician',
-      avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=120&auto=format&fit=crop&q=80',
-    },
-    excerpt:
-      'A comprehensive clinical breakdown of non-surgical fat crystallization vs invasive surgery: cellular apoptosis rates, recovery periods, safety profiles, and cost comparisons.',
-    content: [
-      {
-        type: 'paragraph',
-        text: 'Stubborn pockets of adipose tissue—commonly concentrated around the lower abdomen, flanks, and inner thighs—often resist even the most disciplined workout routines and caloric deficits. For decades, traditional suction-assisted liposuction stood as the sole clinical intervention. However, advancements in non-invasive thermal cryolipolysis have fundamentally transformed modern body contouring.'
-      },
-      {
-        type: 'heading',
-        text: 'How CryoSculpt 360° Induces Natural Cell Apoptosis'
-      },
-      {
-        type: 'paragraph',
-        text: 'Unlike mechanical suction that physically tears fat deposits under general anesthesia, CryoSculpt 360° harnesses the biological vulnerability of adipocytes to precise cold temperatures (-9°C to -11°C). While surrounding skin, nerves, and vascular channels remain completely unharmed, lipid cells undergo programmed cell death (apoptosis).'
-      },
-      {
-        type: 'takeaways',
-        items: [
-          'Zero Anesthesia & Zero Cuts: Walk in during lunch break and return to work immediately.',
-          'Documented 25% to 30% Fat Reduction in the treated zone over 4 to 8 weeks.',
-          'Eliminated fat cells are flushed naturally via the lymphatic system and liver.',
-          'Significantly lower cost and zero surgical recovery downtime compared to traditional lipo.'
-        ]
-      },
-      {
-        type: 'heading',
-        text: 'Who is the Ideal Candidate?'
-      },
-      {
-        type: 'paragraph',
-        text: 'Candidates with pinchable localized fat deposits looking for natural body contouring without the trauma of invasive surgery will find CryoSculpt 360° an optimal solution. During your initial consultation at Tenziaa Clinic, a 3D ultrasound scan determines your exact subcutaneous fat thickness.'
-      }
-    ]
-  },
-  {
-    id: 'deoxycholic-acid-chin',
-    title: 'How Deoxycholic Acid Permanently Dissolves Double Chin Without Surgery',
-    category: 'Non-Invasive Sculpting',
-    featured: false,
-    image: '/images/chin-reduction.jpg',
-    readTime: '4 min read',
-    date: 'Sep 18, 2026',
-    author: {
-      name: 'Dr. Radhika Menon',
-      role: 'Senior Dermatologist',
-      avatar: 'https://images.unsplash.com/photo-1594824813576-6415f3ec52a4?w=120&auto=format&fit=crop&q=80',
-    },
-    excerpt:
-      'Discover how targeted micro-injections break down stubborn submental fat cell walls permanently, revealing a defined jawline with zero stitches or downtime.',
-    content: [
-      {
-        type: 'paragraph',
-        text: 'Submental fullness—commonly known as a double chin—can be genetically predetermined and largely immune to weight loss. Deoxycholic acid is a naturally synthesized bile acid that breaks down dietary fat in the gut. In aesthetic medicine, a bio-identical formulation is injected to permanently dissolve localized fat.'
-      },
-      {
-        type: 'takeaways',
-        items: [
-          'US-FDA cleared injectable treatment specifically calibrated for submental fullness.',
-          'Destroys cell membranes permanently: eliminated fat cells cannot re-accumulate.',
-          'Noticeable contouring and jawline definition appearing over 2 to 4 sessions.'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'rf-skin-tightening',
-    title: 'The Science of RF Skin Tightening: Why Collagen Stimulates Post-Inch Loss',
-    category: 'Skin Tightening',
-    featured: false,
-    image: '/images/rf-sculpting.jpg',
-    readTime: '6 min read',
-    date: 'Sep 12, 2026',
-    author: {
-      name: 'Clinical Team Tenziaa',
-      role: 'Aesthetic Research Division',
-      avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120&auto=format&fit=crop&q=80',
-    },
-    excerpt:
-      'Why losing centimeters quickly can lead to loose skin, and how multi-polar radiofrequency heat energy rebuilds structural elastin matrices for firm, youthful skin.',
-    content: [
-      {
-        type: 'paragraph',
-        text: 'When subcutaneous fat deposits decrease rapidly, the overlying skin often struggles to retract due to depleted dermal collagen and degraded elastin fibers. Multi-polar radiofrequency (RF) delivers volumetric thermal energy to the deep dermis, stimulating immediate neocollagenesis.'
-      },
-      {
-        type: 'takeaways',
-        items: [
-          'Safe, controlled dermal heating (40°C-42°C) triggers immediate collagen contraction.',
-          'Long-term cellular synthesis of new collagen and elastin fibers over 60-90 days.',
-          'Painless, soothing warm massage sensation with zero skin peeling or recovery time.'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'subcutaneous-vs-visceral',
-    title: 'Subcutaneous vs. Visceral Fat: What Your 3D Body Composition Scan Reveals',
-    category: 'Clinical Diagnosis',
-    featured: false,
-    image: '/images/hero-clinic.jpg',
-    readTime: '4 min read',
-    date: 'Sep 05, 2026',
-    author: {
-      name: 'Dr. S. K. Narayanan',
-      role: 'Bariatric Consultant',
-      avatar: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=120&auto=format&fit=crop&q=80',
-    },
-    excerpt:
-      'Understanding why diet-resistant fat refuses to budge and how localized acoustic cavitation micro-targets pinchable adipocytes for measurable inch loss.',
-    content: [
-      {
-        type: 'paragraph',
-        text: 'Not all fat is biologically equal. Visceral fat wraps around internal organs and is highly responsive to caloric deficits and cardiovascular conditioning. Subcutaneous fat, located immediately beneath the dermal layer, has fewer beta-receptors and is hormonally resistant to standard dieting.'
-      },
-      {
-        type: 'takeaways',
-        items: [
-          '3D Ultrasound Scanning accurately maps your ratio of subcutaneous to visceral tissue.',
-          'Non-invasive slimming specifically targets subcutaneous fat layers resistant to diet.',
-          'Helps formulate a hybrid protocol of targeted inch loss and metabolic nutritional coaching.'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'vfit-body-contouring',
-    title: 'V-Fit Body Contouring: How Lunchtime 45-Minute Sessions Deliver Real Results',
-    category: 'Non-Invasive Sculpting',
-    featured: false,
-    image: '/images/vfit-contour.jpg',
-    readTime: '5 min read',
-    date: 'Aug 29, 2026',
-    author: {
-      name: 'Dr. Arvind Swaminathan',
-      role: 'Chief Aesthetic Physician',
-      avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=120&auto=format&fit=crop&q=80',
-    },
-    excerpt:
-      'Explore how synchronized radiofrequency paired with deep muscular contraction contours the abdomen, flanks, and thighs without downtime.',
-    content: [
-      {
-        type: 'paragraph',
-        text: 'V-Fit represents next-generation comprehensive contouring. By simultaneously inducing supramaximal muscle contractions and subdermal fat apoptosis, patients achieve both firm muscle definition and circumferential centimeter reduction in single sessions.'
-      },
-      {
-        type: 'takeaways',
-        items: [
-          'Equivalency of 20,000 abdominal crunches in a 30-minute reclining session.',
-          'Dual mechanism: +25% average muscle fiber hypertrophy and -30% localized fat layer.',
-          'Safe for all skin tones and requiring zero post-session downtime.'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'metabolic-nutrition-rules',
-    title: 'Metabolic Nutrition: 7 Doctor-Approved Rules to Prevent Fat Rebound',
-    category: 'Diet & Nutrition',
-    featured: false,
-    image: '/images/wellness-fitness.jpg',
-    readTime: '7 min read',
-    date: 'Aug 20, 2026',
-    author: {
-      name: 'Meera Krishnan',
-      role: 'Lead Clinical Nutritionist',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&auto=format&fit=crop&q=80',
-    },
-    excerpt:
-      'The biological secret to maintaining your new sculpted silhouette long-term through circadian meal timing, hydration, and lymphatic drainage support.',
-    content: [
-      {
-        type: 'paragraph',
-        text: 'After eliminating stubborn fat cells through CryoSculpt or V-Fit, preserving your sculpted silhouette requires keeping remaining adipocytes from expanding. Sustainable metabolic nutrition prioritizes hormonal insulin stabilization over restrictive crash starvation.'
-      },
-      {
-        type: 'takeaways',
-        items: [
-          'Prioritize 1.5g protein per kilogram of body weight to preserve metabolic lean tissue.',
-          'Drink at least 3 liters of structured water daily to assist lymphatic flush of lipids.',
-          'Align complex carbohydrate consumption with your natural circadian insulin sensitivity window.'
-        ]
-      }
-    ]
-  }
-];
+const BLOG_POSTS = [];
 
 export default function BlogPage({ onOpenBooking }) {
-  const [activeCategory, setActiveCategory] = useState('All Posts');
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -298,22 +98,22 @@ export default function BlogPage({ onOpenBooking }) {
           </div>
 
           <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            Curated clinical insights, doctor explanations of US-FDA cleared fat reduction technologies, and evidence-based metabolic guides to help you make informed body shaping decisions.
+            Discover educational articles about weight management, inch-loss treatments and healthy lifestyle habits, with guidance to help you explore your options.
           </p>
 
           {/* Quick Stats Badges */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm font-semibold text-slate-700">
             <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs">
               <FileText className="w-4 h-4 text-[#65a30d]" />
-              <span>15+ Clinical Articles</span>
+              <span>Treatment Guides</span>
             </div>
             <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs">
               <Award className="w-4 h-4 text-[#65a30d]" />
-              <span>6 Certified Aesthetic MDs</span>
+              <span>Wellness Tips</span>
             </div>
             <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-2xs">
               <ShieldCheck className="w-4 h-4 text-[#65a30d]" />
-              <span>100% Medically Fact-Checked</span>
+              <span>Doctor Insights</span>
             </div>
           </div>
         </div>
@@ -441,6 +241,21 @@ export default function BlogPage({ onOpenBooking }) {
               </div>
 
             </div>
+          </div>
+        )}
+
+        {/* Empty state when no blogs */}
+        {filteredPosts.length === 0 && (
+          <div className="py-16 px-6 text-center max-w-lg mx-auto bg-white rounded-3xl border border-emerald-100 shadow-sm">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto mb-4 shadow-inner">
+              <BookOpen className="w-8 h-8" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">
+              Articles Coming Soon
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Our clinical team at Tenziaa Clinic Dharmapuri is preparing comprehensive articles on weight management, inch-loss, and body-contouring treatments.
+            </p>
           </div>
         )}
 

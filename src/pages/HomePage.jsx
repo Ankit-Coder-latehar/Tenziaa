@@ -2,11 +2,8 @@ import React from 'react';
 import Hero from '../components/Hero';
 import WhoAreWe from '../components/WhoAreWe';
 import ServicesCarousel from '../components/ServicesCarousel';
-import BeforeAfter from '../components/BeforeAfter';
-import SurgicalContouring from '../components/SurgicalContouring';
-import TestimonialsSlideshow from '../components/TestimonialsSlideshow';
 import ScheduleConsultation from '../components/ScheduleConsultation';
-import WhyChooseUs from '../components/WhyChooseUs';
+import MeetOurTeam from '../components/MeetOurTeam';
 import FAQ from '../components/FAQ';
 
 export default function HomePage({ onOpenBooking, onSelectTreatment, onOpenBCA }) {
@@ -47,25 +44,13 @@ export default function HomePage({ onOpenBooking, onSelectTreatment, onOpenBCA }
         onOpenBooking={onOpenBooking}
       />
 
-      {/* Real Transformations Before & After Section */}
-      <BeforeAfter onOpenBooking={onOpenBooking} />
-
-      {/* Surgical Weight Loss & Body Contouring Section matching user reference */}
-      <SurgicalContouring onOpenBooking={onOpenBooking} />
-
-      {/* Customer Testimonials Slideshow */}
-      <TestimonialsSlideshow />
-
       {/* Schedule a Consultation Form & Image Slideshow */}
       <ScheduleConsultation />
 
-      {/* Why Choose Tenziaa & 4-Step Patient Journey */}
-      <WhyChooseUs 
-        onOpenBooking={() => onOpenBooking()} 
-        onOpenBCA={onOpenBCA}
-      />
+      {/* Meet Our Team Section */}
+      <MeetOurTeam />
 
-      {/* FAQ Accordion */}
+      {/* Still Have Medical Questions Support Card */}
       <FAQ onOpenBooking={() => onOpenBooking()} />
     </>
   );

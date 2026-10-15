@@ -111,14 +111,14 @@ export default function ScheduleConsultation() {
       <div className="absolute bottom-10 right-0 w-96 h-96 bg-emerald-200/25 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-base sm:text-lg font-serif text-slate-700 tracking-wide block mb-2">
             Take The First Step
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Schedule a Free Consultation
+            Schedule a  Consultation
           </h2>
           <div className="pt-2 flex justify-center">
             <div className="w-16 h-1 bg-[#E11D48] rounded-full"></div>
@@ -131,7 +131,7 @@ export default function ScheduleConsultation() {
         {/* 2-Column Container: Form on Left, Image Slideshow on Right */}
         <div className="bg-white rounded-3xl border border-emerald-100 shadow-xl overflow-hidden max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            
+
             {/* Left Column: Consultation Form (7 cols on lg) */}
             <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
               {isSubmitted ? (
@@ -139,11 +139,11 @@ export default function ScheduleConsultation() {
                   <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-inner">
                     <CheckCircle2 className="w-12 h-12" />
                   </div>
-                  
+
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                     Consultation Scheduled!
                   </h3>
-                  
+
                   <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
                     Thank you <strong className="text-slate-900">{formData.name}</strong>. Our senior clinical coordinator from Tenziaa Clinic will contact you shortly at <strong className="text-emerald-800">{formData.phone}</strong> to confirm your appointment.
                   </p>
@@ -185,67 +185,21 @@ export default function ScheduleConsultation() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-1">
                     <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider">
-                      Quick &amp; Confidential
+                      PERSONALISED  &amp; WELLNESS CARE
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                      Reserve Your Assessment
-                    </h3>
+                    <p className="text-xs text-slate-900">
+                      Share your details to connect with our team and explore weight management, inch-loss, and body-contouring treatment options tailored to your needs.
+                    </p>
                   </div>
 
-                  {/* Name Field */}
-                  <div>
-                    <label className="text-xs font-bold text-slate-700 block mb-1.5">
-                      Your Full Name *
-                    </label>
-                    <div className="relative">
-                      <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Radhika Sharma"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
-                      />
-                    </div>
-                  </div>
+
+
 
                   {/* Phone & Email Fields */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1.5">
-                        Phone Number *
-                      </label>
-                      <div className="relative">
-                        <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                        <input
-                          type="tel"
-                          required
-                          placeholder="+91 98765 43210"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
-                        />
-                      </div>
-                    </div>
 
-                    <div>
-                      <label className="text-xs font-bold text-slate-700 block mb-1.5">
-                        Email Address *
-                      </label>
-                      <div className="relative">
-                        <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                        <input
-                          type="email"
-                          required
-                          placeholder="radhika@example.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all"
-                        />
-                      </div>
-                    </div>
-                  </div>
+
+
+
 
                   {/* Please Choose an Option of All Services */}
                   <div>
@@ -339,7 +293,7 @@ export default function ScheduleConsultation() {
                         <span>Submitting Request...</span>
                       ) : (
                         <>
-                          <span>Schedule Free Consultation Now</span>
+                          <span>SCHEDULE YOUR APPOINTMENT</span>
                           <ArrowRight className="w-4 h-4" />
                         </>
                       )}
@@ -348,7 +302,7 @@ export default function ScheduleConsultation() {
 
                   <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 text-center pt-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Free 3D Scan Included • 100% Confidential • Zero Commitment</span>
+                    <span>Expert Guidance • Individual Assessment • Personalised Treatment Options</span>
                   </div>
                 </form>
               )}
@@ -366,9 +320,8 @@ export default function ScheduleConsultation() {
                 return (
                   <div
                     key={slide.image}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                      isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                    }`}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                      }`}
                   >
                     <img
                       src={slide.image}
@@ -411,11 +364,10 @@ export default function ScheduleConsultation() {
                         key={idx}
                         type="button"
                         onClick={() => setCurrentSlide(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          idx === currentSlide
-                            ? 'w-7 bg-emerald-400'
-                            : 'w-2 bg-white/50 hover:bg-white'
-                        }`}
+                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlide
+                          ? 'w-7 bg-emerald-400'
+                          : 'w-2 bg-white/50 hover:bg-white'
+                          }`}
                         aria-label={`Slide ${idx + 1}`}
                       />
                     ))}
@@ -449,6 +401,6 @@ export default function ScheduleConsultation() {
         </div>
 
       </div>
-    </section>
+    </section >
   );
 }
