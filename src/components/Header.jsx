@@ -68,7 +68,7 @@ export default function Header({ onOpenBooking, onOpenBCA }) {
           <div className="hidden md:flex items-center gap-6 text-emerald-700">
             <span className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-emerald-600" />
-              MON-SUN: 10 am - 7pm
+              MON-SUN: 10 AM - 7PM
             </span>
 
           </div>

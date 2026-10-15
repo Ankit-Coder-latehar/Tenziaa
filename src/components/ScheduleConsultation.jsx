@@ -35,28 +35,13 @@ const CONSULTATION_SLIDES = [
 ];
 
 const ALL_SERVICES = [
-  'V-Fit Contour',
-  'Skin Fusion RF Sculpting',
-  'AI Robotic Sonic Slim',
-  'CryoSculpt 360° Fat Freezing',
-  'EMSculpt Neo Core & Tone',
-  'Calf Muscle Reduction',
-  'Bariatric Surgery & Consultation',
-  'Abdominoplasty (Tummy Tuck)',
-  'Body Lift Surgery',
-  'Liposuction Contouring',
-  'Metabolic Detox & Inch Loss',
-  'Complimentary 3D Body Fat Scan',
+  'Weight Management',
+  'Inch Loss',
+  'Tenziaa Frost',
 ];
 
 const CLINIC_LOCATIONS = [
-  'Salem — Main Clinic (Near New Bus Stand)',
-  'Chennai — Alwarpet Clinic',
-  'Coimbatore — Race Course Rd',
-  'Bangalore — Indiranagar',
-  'Mumbai — Bandra West',
-  'Pune — Koregaon Park',
-  'Virtual Video Consultation (Online Doctor)',
+  'Dharmapuri - Bharathipuram',
 ];
 
 export default function ScheduleConsultation() {
@@ -64,8 +49,8 @@ export default function ScheduleConsultation() {
     name: '',
     phone: '',
     email: '',
-    service: 'V-Fit Contour',
-    location: 'Salem — Main Clinic (Near New Bus Stand)',
+    service: 'Weight Management',
+    location: 'Dharmapuri - Bharathipuram',
     date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
     time: '11:00 AM - 12:30 PM',
   });
