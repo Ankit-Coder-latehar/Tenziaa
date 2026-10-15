@@ -118,10 +118,10 @@ export default function ScheduleConsultation() {
             Take The First Step
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Schedule a  Consultation
+            Schedule a Consultation
           </h2>
           <div className="pt-2 flex justify-center">
-            <div className="w-16 h-1 bg-[#E11D48] rounded-full"></div>
+            <div className="w-16 h-1 bg-emerald-600 rounded-full"></div>
           </div>
           <p className="mt-3 text-slate-600 text-sm sm:text-base">
             Book your 1-on-1 assessment with our certified aesthetic physicians and receive a complimentary 3D Body Composition &amp; Fat Scan.

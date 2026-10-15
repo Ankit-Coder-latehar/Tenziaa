@@ -58,7 +58,7 @@ export default function WhoAreWe() {
             </h2>
             {/* The distinct horizontal accent line from the reference image */}
             <div className="pt-2">
-              <div className="w-16 h-1 bg-[#E11D48] rounded-full"></div>
+              <div className="w-16 h-1 bg-emerald-600 rounded-full"></div>
             </div>
           </div>
 
