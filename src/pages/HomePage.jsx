@@ -5,8 +5,9 @@ import ServicesCarousel from '../components/ServicesCarousel';
 import ScheduleConsultation from '../components/ScheduleConsultation';
 import MeetOurTeam from '../components/MeetOurTeam';
 import FAQ from '../components/FAQ';
+import ComplimentaryScanCTA from '../components/ComplimentaryScanCTA';
 
-export default function HomePage({ onOpenBooking, onSelectTreatment, onOpenBCA }) {
+export default function HomePage({ onOpenBooking, onSelectTreatment }) {
   const handleScrollToConsultation = () => {
     const el = document.getElementById('consultation');
     if (el) {
@@ -49,6 +50,9 @@ export default function HomePage({ onOpenBooking, onSelectTreatment, onOpenBCA }
 
       {/* Meet Our Team Section */}
       <MeetOurTeam />
+
+      {/* Complimentary 3D Ultrasound Body Fat Scan Call-to-Action */}
+      <ComplimentaryScanCTA onOpenBooking={onOpenBooking} />
 
       {/* Still Have Medical Questions Support Card */}
       <FAQ onOpenBooking={() => onOpenBooking()} />

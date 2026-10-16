@@ -1,38 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { User, Phone, Mail, Sparkles, MapPin, Calendar, Clock, CheckCircle2, ChevronLeft, ChevronRight, ShieldCheck, ArrowRight } from 'lucide-react';
-
-const CONSULTATION_SLIDES = [
-  {
-    image: '/images/hero-clinic.jpg',
-    title: 'Expert Doctor Consultation',
-    subtitle: '1-on-1 personalized body composition assessment',
-    tag: 'Senior Aesthetic Physician',
-  },
-  {
-    image: '/images/clinic-suite.jpg',
-    title: 'World-Class Contouring Suite',
-    subtitle: 'Relaxing luxury ambiance with zero pain or downtime',
-    tag: 'US-FDA Cleared Tech',
-  },
-  {
-    image: '/images/rf-sculpting.jpg',
-    title: 'Advanced Skin Fusion RF',
-    subtitle: 'Skin tightening and deep collagen remodeling',
-    tag: 'Non-Surgical Precision',
-  },
-  {
-    image: '/images/vfit-contour.jpg',
-    title: 'V-Fit Body Transformation',
-    subtitle: 'Targeted centimeter inch loss across problem zones',
-    tag: 'Guaranteed Results',
-  },
-  {
-    image: '/images/treatment-cryo.jpg',
-    title: 'CryoSculpt 360° Fat Freezing',
-    subtitle: 'Permanent fat cell crystallization and elimination',
-    tag: 'Apoptosis Technology',
-  },
-];
+import React, { useState } from 'react';
+import { Sparkles, MapPin, Calendar, Clock, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
 
 const ALL_SERVICES = [
   'Weight Management',
@@ -40,9 +7,8 @@ const ALL_SERVICES = [
   'Tenziaa Frost',
 ];
 
-const CLINIC_LOCATIONS = [
-  'Dharmapuri - Bharathipuram',
-];
+const TODAY_DATE = new Date().toISOString().split('T')[0];
+const DEFAULT_APPOINTMENT_DATE = new Date(Date.now() + 86400000).toISOString().split('T')[0];
 
 export default function ScheduleConsultation() {
   const [formData, setFormData] = useState({
@@ -51,34 +17,12 @@ export default function ScheduleConsultation() {
     email: '',
     service: 'Weight Management',
     location: 'Dharmapuri - Bharathipuram',
-    date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+    date: DEFAULT_APPOINTMENT_DATE,
     time: '11:00 AM - 12:30 PM',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // Slideshow State
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const slideTimerRef = useRef(null);
-
-  useEffect(() => {
-    if (!isPaused) {
-      slideTimerRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % CONSULTATION_SLIDES.length);
-      }, 4000);
-    }
-    return () => clearInterval(slideTimerRef.current);
-  }, [isPaused]);
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + CONSULTATION_SLIDES.length) % CONSULTATION_SLIDES.length);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % CONSULTATION_SLIDES.length);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -177,26 +121,17 @@ export default function ScheduleConsultation() {
                     </p>
                   </div>
 
-
-
-
-                  {/* Phone & Email Fields */}
-
-
-
-
-
-                  {/* Please Choose an Option of All Services */}
+                  {/* Choose Your Service */}
                   <div>
                     <label className="text-xs font-bold text-slate-700 block mb-1.5">
                       Please Choose a Service *
                     </label>
                     <div className="relative">
-                      <Sparkles className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                      <Sparkles className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all cursor-pointer shadow-xs"
                       >
                         {ALL_SERVICES.map((s) => (
                           <option key={s} value={s}>
@@ -207,24 +142,19 @@ export default function ScheduleConsultation() {
                     </div>
                   </div>
 
-                  {/* Location Selector */}
+                  {/* Clinic Location - Fixed to Dharmapuri - Bharathipuram */}
                   <div>
                     <label className="text-xs font-bold text-slate-700 block mb-1.5">
-                      Select Clinic Location *
+                      Clinic Location
                     </label>
                     <div className="relative">
-                      <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <select
-                        value={formData.location}
-                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all"
-                      >
-                        {CLINIC_LOCATIONS.map((loc) => (
-                          <option key={loc} value={loc}>
-                            {loc}
-                          </option>
-                        ))}
-                      </select>
+                      <MapPin className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
+                      <input
+                        type="text"
+                        readOnly
+                        value="Dharmapuri - Bharathipuram"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-emerald-200 bg-emerald-50/70 text-sm font-semibold text-slate-800 cursor-default select-none shadow-xs"
+                      />
                     </div>
                   </div>
 
@@ -238,7 +168,7 @@ export default function ScheduleConsultation() {
                         <Calendar className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                         <input
                           type="date"
-                          min={new Date().toISOString().split('T')[0]}
+                          min={TODAY_DATE}
                           value={formData.date}
                           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                           className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white text-slate-800"
@@ -293,90 +223,43 @@ export default function ScheduleConsultation() {
               )}
             </div>
 
-            {/* Right Column: Image Slideshow (5 cols on lg) */}
-            <div
-              className="lg:col-span-5 relative bg-slate-900 min-h-[380px] lg:min-h-full flex flex-col justify-between overflow-hidden group select-none"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {/* Slides */}
-              {CONSULTATION_SLIDES.map((slide, idx) => {
-                const isActive = idx === currentSlide;
-                return (
-                  <div
-                    key={slide.image}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                      }`}
-                  >
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-1000"
-                    />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-black/20"></div>
-                  </div>
-                );
-              })}
+            {/* Right Column: Static Clinic Facility Image (5 cols on lg) */}
+            <div className="lg:col-span-5 relative bg-slate-900 min-h-[420px] lg:min-h-full flex flex-col justify-between overflow-hidden group select-none">
+              {/* Static Building Image */}
+              <div className="absolute inset-0">
+                <img
+                  src="/images/tenziaa-clinic-building.png"
+                  alt="Tenziaa Wellness & Aesthetic Clinic Dharmapuri Facility"
+                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
+                />
+                {/* Gradient Overlay for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-black/35"></div>
+              </div>
 
               {/* Top Tag Badge */}
               <div className="relative z-20 p-6 flex justify-between items-center">
-                <span className="px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md text-white font-bold text-[11px] uppercase tracking-wider shadow">
-                  {CONSULTATION_SLIDES[currentSlide].tag}
+                <span className="px-3.5 py-1.5 rounded-full bg-emerald-600/90 backdrop-blur-md text-white font-bold text-[11px] uppercase tracking-wider shadow flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
+                  <span>Dharmapuri Facility</span>
                 </span>
-                <span className="text-[11px] text-white/80 font-medium bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full">
-                  {currentSlide + 1} / {CONSULTATION_SLIDES.length}
+                <span className="text-[11px] text-emerald-100 font-semibold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                  Salem Main Rd
                 </span>
               </div>
 
-              {/* Bottom Caption & Controls */}
-              <div className="relative z-20 p-6 sm:p-8 space-y-4">
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 text-white space-y-1">
-                  <h4 className="text-xl font-extrabold text-white">
-                    {CONSULTATION_SLIDES[currentSlide].title}
+              {/* Bottom Caption */}
+              <div className="relative z-20 p-6 sm:p-8 space-y-3">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 text-white space-y-1.5 shadow-lg">
+                  <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">
+                    Our Clinical Center
+                  </span>
+                  <h4 className="text-xl sm:text-2xl font-extrabold text-white leading-tight">
+                    Tenziaa Wellness &amp; Aesthetic Clinic
                   </h4>
-                  <p className="text-xs text-emerald-100/90 leading-relaxed font-normal">
-                    {CONSULTATION_SLIDES[currentSlide].subtitle}
+                  <p className="text-xs text-emerald-100/90 leading-relaxed font-normal flex items-start gap-1.5 pt-1">
+                    <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <span>Indhira Nagar, Salem Main Rd, Dharmapuri</span>
                   </p>
-                </div>
-
-                {/* Arrow navigation & dots */}
-                <div className="flex items-center justify-between pt-1">
-                  {/* Dots */}
-                  <div className="flex items-center gap-2">
-                    {CONSULTATION_SLIDES.map((_, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === currentSlide
-                          ? 'w-7 bg-emerald-400'
-                          : 'w-2 bg-white/50 hover:bg-white'
-                          }`}
-                        aria-label={`Slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Left & Right Arrow Buttons */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={prevSlide}
-                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Previous slide"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={nextSlide}
-                      className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Next slide"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
                 </div>
               </div>
 

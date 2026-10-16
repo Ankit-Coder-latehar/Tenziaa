@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  Calendar, Clock, User, ArrowRight, Search, Tag, Sparkles, 
+import {
+  Calendar, Clock, User, ArrowRight, Search, Tag, Sparkles,
   BookOpen, Share2, Check, X, ChevronRight, Bookmark, ThumbsUp, MessageSquare
 } from 'lucide-react';
 
@@ -17,8 +17,6 @@ export default function Blog({ onOpenBooking }) {
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedArticle, setSelectedArticle] = useState(null);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
   // Filter posts based on Category and Search Query
   const filteredPosts = useMemo(() => {
@@ -35,14 +33,6 @@ export default function Blog({ onOpenBooking }) {
 
   const featuredPost = BLOG_POSTS.find((p) => p.featured) || BLOG_POSTS[0];
 
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    if (!newsletterEmail) return;
-    setNewsletterSubscribed(true);
-    setNewsletterEmail('');
-    setTimeout(() => setNewsletterSubscribed(false), 5000);
-  };
-
   return (
     <section id="blog" className="py-20 sm:py-28 bg-[#fcfdfd] relative overflow-hidden">
       {/* Decorative ambient background glows */}
@@ -50,7 +40,7 @@ export default function Blog({ onOpenBooking }) {
       <div className="absolute bottom-10 left-10 w-[550px] h-[550px] bg-[#d9f99d]/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-[#84cc16]/50 text-emerald-900 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
@@ -74,7 +64,7 @@ export default function Blog({ onOpenBooking }) {
         {/* Search & Category Filter Bar */}
         <div className="mb-12 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            
+
             {/* Search Input */}
             <div className="relative w-full md:w-80">
               <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
@@ -103,11 +93,10 @@ export default function Blog({ onOpenBooking }) {
                   key={cat}
                   type="button"
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    activeCategory === cat
+                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${activeCategory === cat
                       ? 'bg-slate-900 text-white shadow-md'
                       : 'bg-white text-slate-600 border border-slate-200 hover:border-[#84cc16] hover:text-slate-900'
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -121,7 +110,7 @@ export default function Blog({ onOpenBooking }) {
         {activeCategory === 'All Posts' && !searchQuery && featuredPost && (
           <div className="mb-14">
             <div className="group relative rounded-3xl bg-white border-2 border-[#84cc16] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center">
-              
+
               {/* Image side */}
               <div className="lg:col-span-7 h-72 sm:h-96 lg:h-[420px] relative overflow-hidden bg-slate-100">
                 <img
@@ -224,7 +213,7 @@ export default function Blog({ onOpenBooking }) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                
+
                 <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-emerald-950 font-bold text-[11px] uppercase tracking-wider shadow-sm border border-emerald-100">
                   {post.category}
                 </span>
@@ -303,46 +292,6 @@ export default function Blog({ onOpenBooking }) {
           </div>
         )}
 
-        {/* Aesthetic Newsletter & Clinical Updates Banner */}
-        <div className="mt-18 rounded-3xl bg-gradient-to-r from-emerald-900 via-slate-900 to-teal-900 p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl border border-emerald-800/40">
-          <div className="absolute -right-10 -bottom-10 w-80 h-80 bg-[#84cc16]/15 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div className="relative z-10 max-w-2xl">
-            <span className="px-3 py-1 rounded-full bg-[#84cc16]/20 border border-[#84cc16]/40 text-[#a3e635] text-[11px] font-bold uppercase tracking-wider">
-              Free Monthly Aesthetic Journal
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold mt-3 tracking-tight">
-              Get Doctor-Curated Fat Reduction Guides &amp; Exclusive Clinic Offers
-            </h3>
-            <p className="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
-              Join 12,000+ subscribers receiving clinical updates on non-invasive slimming breakthroughs, diet protocols, and private consultation discounts.
-            </p>
-
-            {newsletterSubscribed ? (
-              <div className="mt-6 p-4 rounded-2xl bg-emerald-700/80 border border-emerald-400 text-white text-sm flex items-center gap-2">
-                <Check className="w-5 h-5 text-[#a3e635]" />
-                <span>Thank you! You are subscribed. Check your inbox for the 3D Body Scan welcome guide.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit} className="mt-6 flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your personal email address..."
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#84cc16] focus:bg-white/15"
-                />
-                <button
-                  type="submit"
-                  className="px-8 py-3.5 rounded-full bg-[#84cc16] hover:bg-[#a3e635] text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg cursor-pointer"
-                >
-                  Subscribe
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
 
       </div>
 
@@ -350,7 +299,7 @@ export default function Blog({ onOpenBooking }) {
       {selectedArticle && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
           <div className="relative bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-100 overflow-hidden transform transition-all my-auto max-h-[92vh] flex flex-col">
-            
+
             {/* Modal Header Image */}
             <div className="relative h-60 sm:h-72 overflow-hidden bg-slate-900 shrink-0">
               <img
@@ -381,7 +330,7 @@ export default function Blog({ onOpenBooking }) {
 
             {/* Modal Body */}
             <div className="p-6 sm:p-10 space-y-6 overflow-y-auto flex-1">
-              
+
               {/* Author & Meta */}
               <div className="flex items-center justify-between pb-5 border-b border-slate-100">
                 <div className="flex items-center gap-3">

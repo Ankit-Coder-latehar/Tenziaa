@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Logo from './Logo';
 import { Phone, Calendar, Menu, X, Clock, ShieldCheck, ArrowRight, Sparkles } from 'lucide-react';
 
-export default function Header({ onOpenBooking, onOpenBCA }) {
+export default function Header({ onOpenBooking }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -22,6 +22,7 @@ export default function Header({ onOpenBooking, onOpenBCA }) {
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services-carousel' },
     { name: 'Wellness Blog', href: '/blog' },
+
   ];
 
   const handleNavClick = (e, link) => {
@@ -32,6 +33,8 @@ export default function Header({ onOpenBooking, onOpenBCA }) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (link.href === '/blog') {
       navigate('/blog');
+    } else if (link.href === '/admin') {
+      navigate('/admin');
     } else if (link.href.startsWith('#')) {
       if (location.pathname !== '/') {
         navigate('/' + link.href);
@@ -50,26 +53,16 @@ export default function Header({ onOpenBooking, onOpenBCA }) {
       <div className="bg-emerald-50/80 border-b border-emerald-100 text-xs py-2 px-4 transition-all">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 text-emerald-800 font-medium flex-wrap">
-            <span className="flex h-2 w-2 relative shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
-            </span>
-            <span>Know Your Body: T-oet Consultation at <span className="line-through text-slate-400 font-semibold">₹500</span> <span className="font-extrabold text-emerald-900">₹350</span> (30% OFF)</span>
-            <button
-              type="button"
-              onClick={() => onOpenBCA ? onOpenBCA() : (onOpenBooking && onOpenBooking({ treatment: 'T-oet Consultation & 3D Body Scan' }))}
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white font-extrabold text-[10px] sm:text-[11px] uppercase tracking-wider transition-all duration-200 shadow-xs hover:shadow hover:scale-105 active:scale-95 cursor-pointer ml-1 sm:ml-2 shrink-0"
-            >
-              <span>T-oet Consultation</span>
-              <ArrowRight className="w-3 h-3" />
-            </button>
           </div>
 
-          <div className="hidden md:flex items-center gap-6 text-emerald-700">
+          <div className="hidden md:flex items-center gap-5 text-emerald-700">
             <span className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-emerald-600" />
               MON-SUN: 10 AM - 7PM
             </span>
+
+
+
 
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Award, Users, HeartPulse, Sparkles, Clock, CheckCircle } from 'lucide-react';
 
-export default function WhyChooseUs({ onOpenBooking, onOpenBCA }) {
+export default function WhyChooseUs({ onOpenBooking }) {
   const points = [
     {
       icon: ShieldCheck,
