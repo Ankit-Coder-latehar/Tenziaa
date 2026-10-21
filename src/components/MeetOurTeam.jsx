@@ -62,9 +62,9 @@ export default function MeetOurTeam() {
                   />
                 </div>
 
-                {/* Golden ★ EXPERT Badge */}
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-1 px-4 py-1 rounded-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 text-white font-extrabold text-[11px] uppercase tracking-wider shadow-md border-2 border-white whitespace-nowrap">
-                  <span className="text-amber-200 text-xs leading-none">★</span>
+                {/* Green ★ EXPERT Badge */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-1 px-4 py-1 rounded-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-800 text-white font-extrabold text-[11px] uppercase tracking-wider shadow-md border-2 border-white whitespace-nowrap">
+                  <span className="text-emerald-200 text-xs leading-none">★</span>
                   <span>EXPERT</span>
                 </div>
               </div>

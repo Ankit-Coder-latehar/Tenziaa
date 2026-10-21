@@ -60,58 +60,20 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
         onClick={(e) => e.stopPropagation()}
       >
         {/* Left Column: Visual Banner */}
-        <div className="w-full md:w-[46%] bg-[#16432e] text-white relative flex flex-col justify-between overflow-hidden shrink-0 min-h-[300px] md:min-h-[510px]">
-          {/* Top T&C label */}
-          <span className="absolute top-2.5 right-3 text-[10px] text-white/70 tracking-tight z-10 select-none">
-            *T&amp;C Apply
-          </span>
-
-          {/* Top Headline & Discount Badge */}
-          <div className="pt-6 px-6 sm:px-8 pb-2 z-10">
-            {/* Script Cursive Header */}
-            <div 
-              style={{ fontFamily: "'Great Vibes', cursive" }} 
-              className="text-white text-3xl sm:text-4xl font-normal leading-tight tracking-wide drop-shadow-sm"
-            >
-              Science that
-            </div>
-
-            {/* Sans Uppercase Heading */}
-            <div className="text-white font-extrabold text-lg sm:text-xl tracking-wider uppercase mt-0.5">
-              COOLS FAT AWAY
-            </div>
-
-            {/* Offer Metallic Pill */}
-            <div className="mt-3.5 inline-flex items-center justify-between w-full max-w-[230px] px-3.5 py-1.5 rounded bg-gradient-to-r from-slate-100 via-white to-slate-200 shadow-md border border-white/50 text-slate-900">
-              <div className="flex flex-col text-left leading-none">
-                <span className="text-[10px] sm:text-[11px] font-black tracking-tight text-slate-800 uppercase">
-                  COOLTECH
-                </span>
-                <span className="text-[8px] sm:text-[9px] font-bold text-slate-500 tracking-wider uppercase mt-0.5">
-                  UPTO
-                </span>
-              </div>
-              <div className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight leading-none ml-2">
-                50% OFF
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Model Image */}
-          <div className="relative w-full flex-1 flex items-end justify-center mt-2 overflow-hidden">
+        <div className="hidden sm:flex sm:w-full md:w-[46%] bg-[#16432e] text-white relative flex-col justify-end overflow-hidden shrink-0 h-48 sm:h-56 md:h-auto md:min-h-[510px]">
+          {/* Model Image */}
+          <div className="relative w-full h-full flex items-end justify-center overflow-hidden">
             <img
               src="/images/appointment-model.png"
-              alt="Science that Cools Fat Away - Tenziaa Cooltech"
-              className="w-full h-[240px] sm:h-[280px] md:h-full object-cover object-top"
+              alt="Tenziaa Aesthetic Clinic"
+              className="w-full h-full object-cover object-top"
               loading="eager"
             />
-            {/* Gradient shadow overlay to seamlessly blend top background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#16432e] via-transparent to-transparent h-16 pointer-events-none" />
           </div>
         </div>
 
         {/* Right Column: Get in Touch Form */}
-        <div className="w-full md:w-[54%] bg-white p-6 sm:p-8 md:p-9 flex flex-col justify-center relative overflow-y-auto">
+        <div className="w-full md:w-[54%] bg-white p-5 sm:p-8 md:p-9 flex flex-col justify-center relative overflow-y-auto">
           {/* Close 'X' Button */}
           <button
             type="button"

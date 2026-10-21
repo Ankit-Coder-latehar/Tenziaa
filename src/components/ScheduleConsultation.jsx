@@ -62,7 +62,7 @@ export default function ScheduleConsultation() {
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
 
             {/* Left Column: Consultation Form (7 cols on lg) */}
-            <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
+            <div className="lg:col-span-7 p-5 sm:p-8 lg:p-12 flex flex-col justify-between">
               {isSubmitted ? (
                 <div className="text-center py-10 space-y-5">
                   <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-inner">
@@ -215,16 +215,16 @@ export default function ScheduleConsultation() {
                     </button>
                   </div>
 
-                  <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 text-center pt-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Expert Guidance • Individual Assessment • Personalised Treatment Options</span>
+                  <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-slate-500 text-center pt-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span>Expert Guidance • Individual Assessment • Personalised Options</span>
                   </div>
                 </form>
               )}
             </div>
 
             {/* Right Column: Static Clinic Facility Image (5 cols on lg) */}
-            <div className="lg:col-span-5 relative bg-slate-900 min-h-[420px] lg:min-h-full flex flex-col justify-between overflow-hidden group select-none">
+            <div className="lg:col-span-5 relative bg-slate-900 min-h-[260px] sm:min-h-[340px] lg:min-h-full flex flex-col justify-end overflow-hidden group select-none">
               {/* Static Building Image */}
               <div className="absolute inset-0">
                 <img
@@ -236,23 +236,9 @@ export default function ScheduleConsultation() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-black/35"></div>
               </div>
 
-              {/* Top Tag Badge */}
-              <div className="relative z-20 p-6 flex justify-between items-center">
-                <span className="px-3.5 py-1.5 rounded-full bg-emerald-600/90 backdrop-blur-md text-white font-bold text-[11px] uppercase tracking-wider shadow flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
-                  <span>Dharmapuri Facility</span>
-                </span>
-                <span className="text-[11px] text-emerald-100 font-semibold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-                  Salem Main Rd
-                </span>
-              </div>
-
               {/* Bottom Caption */}
               <div className="relative z-20 p-6 sm:p-8 space-y-3">
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20 text-white space-y-1.5 shadow-lg">
-                  <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">
-                    Our Clinical Center
-                  </span>
                   <h4 className="text-xl sm:text-2xl font-extrabold text-white leading-tight">
                     Tenziaa Wellness &amp; Aesthetic Clinic
                   </h4>

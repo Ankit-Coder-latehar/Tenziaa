@@ -2,13 +2,13 @@ import React from 'react';
 
 export default function FloatingWhatsApp() {
   return (
-    <aside aria-label="WhatsApp Chat" className="fixed bottom-6 right-6 z-50">
+    <aside aria-label="WhatsApp Chat" className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
       {/* Authentic WhatsApp Floating Button */}
       <a
         href="https://wa.me/919363721689?text=Hi%20Tenziaa%20Dharmapuri,%20I%20would%20like%20to%20know%20more%20about%20slimming%20and%20body%20contouring%20treatments."
         target="_blank"
         rel="noopener noreferrer"
-        className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+        className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
         title="Chat with us on WhatsApp"
         aria-label="Chat with us on WhatsApp"
       >

@@ -65,14 +65,14 @@ export default function WhoAreWe() {
           {/* Middle Paragraph */}
           <div className="lg:col-span-4">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              Tenziaa is a clinic built around one goal: helping you reshape your body safely and confidently. We know that stubborn fat and weight gain are about more than looks. They shape how you feel, how you dress, and how you live. That's why every plan is designed for lasting progress rather than quick fixes.
+              At Tenziaa, our mission is simple: to help you reshape your body safely and confidently. We understand that stubborn fat and weight gain affect more than just your appearance—they can influence how you feel, how you dress, and how you live your life. That’s why we focus on personalized care and sustainable progress, not quick fixes.
             </p>
           </div>
 
           {/* Right Paragraph */}
           <div className="lg:col-span-4">
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-              As Dharmapuri's first dedicated slimming and body contouring clinic, we combine advanced slimming technologies, expert guidance, and personalized care to help you achieve your dream body in a healthy and sustainable way.
+              As Dharmapuri’s first dedicated slimming and body contouring clinic, Tenziaa combines advanced slimming technologies, expert guidance, and tailored treatment plans to help you work towards your body goals in a safe, healthy, and sustainable way.
             </p>
           </div>
 
