@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, MapPin, Calendar, Clock, CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Sparkles, MapPin, Calendar, Clock, CheckCircle2, ShieldCheck, ArrowRight, User, Phone, Mail } from 'lucide-react';
 
 const ALL_SERVICES = [
   'Weight Management',
@@ -79,6 +79,20 @@ export default function ScheduleConsultation() {
 
                   <div className="bg-emerald-50/80 p-5 rounded-2xl border border-emerald-100 text-left text-xs sm:text-sm space-y-2 max-w-md mx-auto">
                     <div className="flex justify-between">
+                      <span className="text-slate-500">Name:</span>
+                      <span className="font-bold text-slate-900">{formData.name}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Phone:</span>
+                      <span className="font-bold text-slate-900">{formData.phone}</span>
+                    </div>
+                    {formData.email && (
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">Email:</span>
+                        <span className="font-bold text-slate-900">{formData.email}</span>
+                      </div>
+                    )}
+                    <div className="flex justify-between">
                       <span className="text-slate-500">Service:</span>
                       <span className="font-bold text-slate-900">{formData.service}</span>
                     </div>
@@ -94,7 +108,7 @@ export default function ScheduleConsultation() {
 
                   <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
                     <a
-                      href={`https://wa.me/919363721689?text=Hi%20Tenziaa%20Clinic,%20I%20have%20scheduled%20a%20consultation%20for%20${encodeURIComponent(formData.service)}`}
+                      href={`https://wa.me/919363721689?text=Hi%20Tenziaa%20Clinic,%20I%20am%20${encodeURIComponent(formData.name || 'Client')}%20and%20I%20have%20scheduled%20a%20consultation%20for%20${encodeURIComponent(formData.service)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all text-center"
@@ -111,7 +125,7 @@ export default function ScheduleConsultation() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="space-y-1">
                     <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider">
                       PERSONALISED  &amp; WELLNESS CARE
@@ -119,6 +133,61 @@ export default function ScheduleConsultation() {
                     <p className="text-xs text-slate-900">
                       Share your details to connect with our team and explore weight management, inch-loss, and body-contouring treatment options tailored to your needs.
                     </p>
+                  </div>
+
+                  {/* Full Name */}
+                  <div>
+                    <label className="text-xs font-bold text-slate-700 block mb-1.5">
+                      Full Name *
+                    </label>
+                    <div className="relative">
+                      <User className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
+                      <input
+                        type="text"
+                        required
+                        placeholder="Enter your full name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all shadow-xs"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone & Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-bold text-slate-700 block mb-1.5">
+                        Phone Number *
+                      </label>
+                      <div className="relative">
+                        <Phone className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
+                        <input
+                          type="tel"
+                          required
+                          placeholder="e.g. +91 98765 43210"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all shadow-xs"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-bold text-slate-700 block mb-1.5">
+                        Email Address *
+                      </label>
+                      <div className="relative">
+                        <Mail className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
+                        <input
+                          type="email"
+                          required
+                          placeholder="name@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all shadow-xs"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   {/* Choose Your Service */}

@@ -3,7 +3,7 @@ import React from 'react';
 const TEAM = [
   {
     name: 'Clinical Specialist',
-    role: 'Wellness & Aesthetic Consultant',
+    role: 'Wellness  Consultant',
     image: '/images/team-member-square.jpg',
   },
 ];
