@@ -135,13 +135,13 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows (Desktop/Tablet only - hidden on mobile responsive) */}
           {maxIndex > 0 && (
             <>
               <button
                 type="button"
                 onClick={handlePrev}
-                className="absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+                className="hidden sm:flex absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -149,7 +149,7 @@ export default function ServicesCarousel({ onSelectService, onOpenBooking }) {
               <button
                 type="button"
                 onClick={handleNext}
-                className="absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+                className="hidden sm:flex absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 text-slate-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200/80 shadow-lg items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
                 aria-label="Next slide"
               >
                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />

@@ -1,0 +1,6 @@
+# Robots.txt for Tenziaa Clinic
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://tenziaa.com/sitemap.xml
