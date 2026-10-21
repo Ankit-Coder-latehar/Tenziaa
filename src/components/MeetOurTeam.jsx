@@ -4,7 +4,7 @@ const TEAM = [
   {
     name: 'Clinical Specialist',
     role: 'Wellness  Consultant',
-    image: '/images/team-member-square.jpg',
+    image: '/images/clinical-specialist.png',
   },
 ];
 

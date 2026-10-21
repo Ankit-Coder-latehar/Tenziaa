@@ -165,14 +165,7 @@ export default function Footer({ onOpenBooking }) {
               <span className="text-emerald-200/90 font-medium">
                 ❤️Crafted by Thamizh Marketing
               </span>
-              <a
-                href="http://thamizhmarketing.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-emerald-300 transition-colors text-emerald-300/80 underline underline-offset-2 mt-0.5"
-              >
-                thamizhmarketing.com
-              </a>
+
             </div>
           </div>
         </div>

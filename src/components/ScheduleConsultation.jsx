@@ -23,14 +23,46 @@ export default function ScheduleConsultation() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    setErrorMessage('');
+    try {
+      const response = await fetch('https://formspree.io/f/mbgdvwzb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          service: formData.service,
+          location: formData.location,
+          date: formData.date,
+          time: formData.time,
+          formType: 'Schedule Consultation',
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setErrorMessage(
+          data?.errors?.map((err) => err.message).join(', ') ||
+          'Submission error. Please try again or contact us on WhatsApp.'
+        );
+      }
+    } catch (err) {
+      console.error('Formspree submit error:', err);
+      setErrorMessage('Unable to send request. Please try again or contact us directly on WhatsApp.');
+    } finally {
       setLoading(false);
-      setIsSubmitted(true);
-    }, 800);
+    }
   };
 
   return (
@@ -144,6 +176,7 @@ export default function ScheduleConsultation() {
                       <User className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
                       <input
                         type="text"
+                        name="name"
                         required
                         placeholder="Enter your full name"
                         value={formData.name}
@@ -163,6 +196,7 @@ export default function ScheduleConsultation() {
                         <Phone className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
                         <input
                           type="tel"
+                          name="phone"
                           required
                           placeholder="e.g. +91 98765 43210"
                           value={formData.phone}
@@ -180,6 +214,7 @@ export default function ScheduleConsultation() {
                         <Mail className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
                         <input
                           type="email"
+                          name="email"
                           required
                           placeholder="name@example.com"
                           value={formData.email}
@@ -198,6 +233,7 @@ export default function ScheduleConsultation() {
                     <div className="relative">
                       <Sparkles className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
                       <select
+                        name="service"
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white font-medium text-slate-800 transition-all cursor-pointer shadow-xs"
@@ -220,6 +256,7 @@ export default function ScheduleConsultation() {
                       <MapPin className="w-4 h-4 text-emerald-600 absolute left-3.5 top-3.5" />
                       <input
                         type="text"
+                        name="location"
                         readOnly
                         value="Dharmapuri - Bharathipuram"
                         className="w-full pl-10 pr-4 py-3 rounded-xl border border-emerald-200 bg-emerald-50/70 text-sm font-semibold text-slate-800 cursor-default select-none shadow-xs"
@@ -237,6 +274,7 @@ export default function ScheduleConsultation() {
                         <Calendar className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                         <input
                           type="date"
+                          name="date"
                           min={TODAY_DATE}
                           value={formData.date}
                           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
@@ -252,6 +290,7 @@ export default function ScheduleConsultation() {
                       <div className="relative">
                         <Clock className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                         <select
+                          name="time"
                           value={formData.time}
                           onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                           className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600 bg-white text-slate-800"
@@ -266,6 +305,12 @@ export default function ScheduleConsultation() {
                     </div>
                   </div>
 
+                  {errorMessage && (
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-medium text-center">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   {/* Submit Button */}
                   <div className="pt-2">
                     <button
@@ -274,7 +319,7 @@ export default function ScheduleConsultation() {
                       className="w-full py-4 px-6 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-95 disabled:opacity-50 cursor-pointer flex items-center justify-center gap-2"
                     >
                       {loading ? (
-                        <span>Submitting Request...</span>
+                        <span>Submitting to Clinic...</span>
                       ) : (
                         <>
                           <span>SCHEDULE YOUR APPOINTMENT</span>

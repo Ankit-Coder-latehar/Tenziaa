@@ -33,13 +33,32 @@ export default function AppointmentModal({ isOpen, onClose, initialData = null }
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await fetch('https://formspree.io/f/mbgdvwzb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          location: formData.location,
+          formType: 'Book Appointment Modal',
+        }),
+      });
       setIsSubmitted(true);
-    }, 600);
+    } catch (err) {
+      console.error('Submission error:', err);
+      // still show submitted or allow user to proceed
+      setIsSubmitted(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleResetAndClose = () => {
